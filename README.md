@@ -1,3 +1,6 @@
+![GitHub top language](https://img.shields.io/github/languages/top/LittleBlueDot/duck-hunt-game?color=green) ![Contributors](https://img.shields.io/github/contributors/LittleBlueDot/duck-hunt-game?color=blue)
+
+
 # Duck Hunt
 
 ## Description
