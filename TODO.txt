@@ -1,0 +1,30 @@
+Game: 6 ducks, 3 lives, 1 duck - 200 points?
+
+
+
+CSS animations:
+1. Shot missed: laughing dog appearing / disappearing
+2. Shot successful: dog with duck appearing / disappearing
+3. Ducks flying (explore using animated .gif ducks winging)
+4. Duck is shot: falling duck animation
+
+
+HTML / CSS:
+
+1. Play / Start Btn
+2. End of game text: You won! / Yikes, you lost!
+3. Play again btn
+
+JS:
+
+
+
+-----------------------
+
+
+Implement if we have time:
+
+1.	Sound effects
+2.	Btns: a) mute / unmute, c) pause
+4. Different duck images
+3.	Dog walk in the beginning of a game

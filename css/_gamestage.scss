@@ -1,0 +1,95 @@
+body {
+  background: url('../img/stage.png') center center no-repeat;
+  background-size: cover;
+}
+
+.game-stage {
+  position: relative;
+  width: 100%;
+  height: 82vh;
+  display: flex;
+}
+
+.duck {
+  background: url('../img/sprite.png') no-repeat;
+  background-position: 0px -220px;
+  width: 70px;
+  height: 76px;
+  &.falling{
+    background-position: 0 -460px;
+  }
+}
+
+.dog-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.dog {
+  display: flex;
+  justify-content: center;
+  gap: 0 10px;
+}
+
+#dogLaugh {
+  width: 100px;
+  height: 100px;
+  background: url('../img/sprite.png') no-repeat;
+  background-position: -480px -110px;
+}
+
+#dogWithDuck {
+  width: 100px;
+  height: 100px;
+  background: url('../img/sprite.png') no-repeat;
+  background-position: -650px -5px;
+}
+
+.game-information {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0 20px;
+  color: $title-color;
+  & > div {
+    @include box;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 5px 2px;
+    h2 {
+      font-family: $title-font;
+      font-size: $title-size;
+      flex-basis: 100%;
+    }
+  }
+}
+
+#shot {
+  & > div {
+    width: 20px;
+    height: 20px;
+    background: url('../img/sprite.png') no-repeat;
+    background-position: 0px -557px;
+    &.lost {
+      background: transparent;
+    }
+  }
+}
+
+#hit {
+  & > div {
+    width: 20px;
+    height: 20px;
+    background: url('../img/sprite.png') no-repeat;
+    background-position: -52px -557px;
+    &.success {
+      background: url('../img/sprite.png') no-repeat;
+      background-position: -25px -557px;
+    }
+  }
+}
