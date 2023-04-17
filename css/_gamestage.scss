@@ -1,6 +1,7 @@
 body {
   background: url('../img/stage.png') center center no-repeat;
   background-size: cover;
+  cursor: url('/img/crosshair.png') 32 32, crosshair;
 }
 
 .game-stage {
@@ -8,6 +9,7 @@ body {
   width: 100%;
   height: 82vh;
   display: flex;
+
 }
 
 .duck {
