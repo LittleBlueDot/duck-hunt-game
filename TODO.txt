@@ -7,6 +7,7 @@ CSS animations:
 2. Shot successful: dog with duck appearing / disappearing -> or 2 ducks at once
 3. Ducks flying (explore using animated .gif ducks winging)
 4. Duck is shot: falling duck animation
+5. Custom cursor - rifle crosshair
 
 
 HTML / CSS:

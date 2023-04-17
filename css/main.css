@@ -128,6 +128,7 @@ body {
 body {
   background: url("../img/stage.png") center center no-repeat;
   background-size: cover;
+  cursor: url("/img/crosshair.png") 32 32, crosshair;
 }
 
 .game-stage {
@@ -137,14 +138,176 @@ body {
   display: flex;
 }
 
+@keyframes duckFly {
+  0% {
+    background-position: 0px -220px;
+  }
+  33% {
+    background-position: -85px -220px;
+  }
+  66% {
+    background-position: -170px -220px;
+  }
+  100% {
+    background-position: -170px -220px;
+  }
+}
+@keyframes duck1 {
+  0% {
+    left: -100px;
+    top: 0px;
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 70px);
+    top: 400px;
+    opacity: 0;
+  }
+}
+@keyframes duck2 {
+  0% {
+    left: -100px;
+    top: 300px;
+    opacity: 1;
+  }
+  50% {
+    left: 200px;
+    top: 0px;
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 70px);
+    top: 100px;
+    opacity: 0;
+  }
+}
+@keyframes duck3 {
+  0% {
+    left: -100px;
+    top: 600px;
+  }
+  50% {
+    left: 600px;
+    top: 0px;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 70px);
+    top: 600px;
+    opacity: 0;
+  }
+}
+@keyframes duck4 {
+  0% {
+    left: -100px;
+    top: 100px;
+  }
+  50% {
+    left: 800px;
+    top: 500px;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 70px);
+    top: 0;
+    opacity: 0;
+  }
+}
+@keyframes duck5 {
+  0% {
+    left: -100px;
+    top: 600px;
+  }
+  50% {
+    left: 600px;
+    top: 0px;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 70px);
+    top: 600px;
+    opacity: 0;
+  }
+}
+@keyframes duck6 {
+  0% {
+    left: -100px;
+    top: 0px;
+  }
+  30% {
+    left: 800px;
+    top: 150px;
+  }
+  60% {
+    left: 1000px;
+    top: 0px;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 70px);
+    top: 0px;
+    opacity: 0;
+  }
+}
+@keyframes duckFall {
+  from {
+    top: 0px;
+    opacity: 1;
+  }
+  to {
+    top: calc(100vh - 76px);
+    opacity: 0;
+  }
+}
 .duck {
   background: url("../img/sprite.png") no-repeat;
   background-position: 0px -220px;
   width: 70px;
   height: 76px;
+  position: absolute;
 }
-.duck.falling {
-  background-position: 0 -460px;
+
+#duck1 {
+  animation: duckFly 200ms infinite step-end alternate, duck1 5s linear forwards;
+}
+
+#duck2 {
+  animation: duckFly 200ms infinite step-end alternate, duck2 5s linear forwards;
+}
+
+#duck3 {
+  animation: duckFly 200ms infinite step-end alternate, duck3 5s linear forwards;
+}
+
+#duck4 {
+  animation: duckFly 200ms infinite step-end alternate, duck4 5s linear forwards;
+}
+
+#duck5 {
+  animation: duckFly 200ms infinite step-end alternate, duck5 5s linear forwards;
+}
+
+#duck6 {
+  animation: duckFly 200ms infinite step-end alternate, duck6 5s linear forwards;
+}
+
+.falling {
+  animation: duckFall 500ms linear forwards !important;
+  background-position: -65px -460px !important;
 }
 
 .dog-container {
