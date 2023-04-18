@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Duck Hunt Game</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css" media="all" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-</head>
+  </head>
 
-<body>
-
+  <body>
     <section class="game-stage">
-        <div id="duck1" class="duck"></div>
-        <div id="duck2" class="duck"></div>
-        <div id="duck3" class="duck"></div>
-        <div id="duck4" class="duck"></div>
-        <div id="duck5" class="duck"></div>
-        <div id="duck6" class="duck falling"></div>
-        <div class="dog-container">
-            <div class="dog">
-                <div id="dogLaugh"></div>
-                <div id="dogWithDuck"></div>
-            </div>
+      <div class="btn-container" id="start"><button onclick="">Play</button></div>
+      <div id="duck1" class="duck"></div>
+      <div id="duck2" class="duck"></div>
+      <div id="duck3" class="duck"></div>
+      <div id="duck4" class="duck"></div>
+      <div id="duck5" class="duck"></div>
+      <div id="duck6" class="duck"></div>
+      <div class="game-end-text-wrap">
+        <p id="winner">Yikes, you lost! / You win</p>
+        <div class="btn" id="restart"><button onclick="">Play again!</button></div>
+      </div>
+      <div class="dog-container">
+        <div class="dog">
+          <div id="dogLaugh"></div>
+          <div id="dogWithDuck"></div>
         </div>
+      </div>
     </section>
 
     <section class="game-information">
-        <div id="shot">
-            <!-- Live one -->
-            <div id="bullet3"></div>
-            <div id="bullet2"></div>
-            <div id="bullet1"></div>
-            <h2>Shot</h2>
-        </div>
-        <div id="hit">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <h2>Hit</h2>
-        </div>
-        <div>
-            <p id="score">0</p>
-            <h2>Score</h2>
-        </div>
-
+      <div id="shot">
+        <!-- Live one -->
+        <div id="bullet3"></div>
+        <div id="bullet2"></div>
+        <div id="bullet1"></div>
+        <h2>Shot</h2>
+      </div>
+      <div id="hit">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <h2>Hit</h2>
+      </div>
+      <div>
+        <p id="score">0</p>
+        <h2>Score</h2>
+      </div>
     </section>
 
-
     <script type="text/javascript" src="/javascript/duckHunt.js"></script>
-</body>
-
+  </body>
 </html>

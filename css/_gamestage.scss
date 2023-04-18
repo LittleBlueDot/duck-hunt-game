@@ -9,149 +9,24 @@ body {
   width: 100%;
   height: 82vh;
   display: flex;
+  overflow: hidden;
 }
 
-@keyframes duckFly {
-  0% {
-    background-position: 0px -220px;
-  }
-  33% {
-    background-position: -85px -220px;
-  }
-  66% {
-    background-position: -170px -220px;
-  }
-  100% {
-    background-position: -170px -220px;
-  }
+.btn-container {
+  position: absolute;
+  max-width: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
-@keyframes duck1 {
-  0% {
-    left: -100px;
-    top: 0px;
-    opacity: 1;
-  }
-  98% {
-    opacity: 1;
-  }
-  100% {
-    left: calc(100% - 70px);
-    top: 400px;
-    opacity: 0;
-  }
-}
-
-@keyframes duck2 {
-  0% {
-    left: -100px;
-    top: 300px;
-    opacity: 1;
-  }
-  50% {
-    left: 200px;
-    top: 0px;
-    opacity: 1;
-  }
-  98% {
-    opacity: 1;
-  }
-  100% {
-    left: calc(100% - 70px);
-    top: 100px;
-    opacity: 0;
-  }
-}
-
-@keyframes duck3 {
-  0% {
-    left: -100px;
-    top: 600px;
-  }
-  50% {
-    left: 600px;
-    top: 0px;
-  }
-  98% {
-    opacity: 1;
-  }
-  100% {
-    left: calc(100% - 70px);
-    top: 600px;
-    opacity: 0;
-  }
-}
-
-@keyframes duck4 {
-  0% {
-    left: -100px;
-    top: 100px;
-  }
-  50% {
-    left: 800px;
-    top: 500px;
-  }
-  98% {
-    opacity: 1;
-  }
-  100% {
-    left: calc(100% - 70px);
-    top: 0;
-    opacity: 0;
-  }
-}
-
-@keyframes duck5 {
-  0% {
-    left: -100px;
-    top: 600px;
-  }
-  50% {
-    left: 600px;
-    top: 0px;
-  }
-  98% {
-    opacity: 1;
-  }
-  100% {
-    left: calc(100% - 70px);
-    top: 600px;
-    opacity: 0;
-  }
-}
-
-@keyframes duck6 {
-  0% {
-    left: -100px;
-    top: 0px;
-  }
-  30% {
-    left: 800px;
-    top: 150px;
-  }
-  60% {
-    left: 1000px;
-    top: 0px;
-  }
-  98% {
-    opacity: 1;
-  }
-  100% {
-    left: calc(100% - 70px);
-    top: 0px;
-    opacity: 0;
-  }
-}
-
-@keyframes duckFall {
-  from {
-    top: 0px;
-    opacity: 1;
-  }
-  to {
-    top: calc(100vh - 76px);
-    opacity: 0;
-  }
+.game-end-text-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .duck {
@@ -163,27 +38,33 @@ body {
 }
 
 #duck1 {
-  animation: duckFly 200ms infinite step-end alternate, duck1 5s linear forwards;
+  animation: duckFly 200ms infinite step-end alternate,
+    duck1 15s linear forwards;
 }
 #duck2 {
-  animation: duckFly 200ms infinite step-end alternate, duck2 5s linear forwards;
+  animation: duckFly 200ms infinite step-end alternate,
+    duck2 15s linear forwards;
 }
 #duck3 {
-  animation: duckFly 200ms infinite step-end alternate, duck3 5s linear forwards;
+  animation: duckFly 200ms infinite step-end alternate,
+    duck3 15s linear forwards;
 }
 #duck4 {
-  animation: duckFly 200ms infinite step-end alternate, duck4 5s linear forwards;
+  animation: duckFly 200ms infinite step-end alternate,
+    duck4 15s linear forwards;
 }
 #duck5 {
-  animation: duckFly 200ms infinite step-end alternate, duck5 5s linear forwards;
+  animation: duckFly 200ms infinite step-end alternate,
+    duck5 15s linear forwards;
 }
 #duck6 {
-  animation: duckFly 200ms infinite step-end alternate, duck6 5s linear forwards;
+  animation: duckFly 200ms infinite step-end alternate,
+    duck6 15s linear forwards;
 }
 
 .falling {
-        animation: duckFall 500ms linear forwards!important;
-        background-position: -65px -460px!important;
+  animation: duckFall 500ms linear forwards !important;
+  background-position: -65px -460px !important;
 }
 
 .dog-container {
@@ -194,19 +75,26 @@ body {
 }
 
 .dog {
+  position: relative;
   display: flex;
   justify-content: center;
   gap: 0 10px;
 }
 
 #dogLaugh {
+  display: none;
   width: 100px;
   height: 100px;
   background: url('../img/sprite.png') no-repeat;
-  background-position: -480px -110px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  //animation: dogAppearing 2s linear forwards, dogLaugh 200ms infinite steps(1) alternate;
+  animation: dogLaugh 200ms infinite steps(1) alternate;
 }
 
 #dogWithDuck {
+  display: none;
   width: 100px;
   height: 100px;
   background: url('../img/sprite.png') no-repeat;
