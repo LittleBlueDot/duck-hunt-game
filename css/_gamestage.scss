@@ -72,6 +72,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 100px;
 }
 
 .dog {
@@ -79,6 +80,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 0 10px;
+  height: 100px;
 }
 
 #dogLaugh {
@@ -89,8 +91,8 @@ body {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
-  //animation: dogAppearing 2s linear forwards, dogLaugh 200ms infinite steps(1) alternate;
-  animation: dogLaugh 200ms infinite steps(1) alternate;
+  animation: dogAppearing 2s linear forwards, dogLaugh 200ms infinite steps(1) alternate;
+  //animation: dogLaugh 200ms infinite steps(1) alternate;
 }
 
 #dogWithDuck {
