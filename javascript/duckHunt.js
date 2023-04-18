@@ -1,27 +1,78 @@
-let gamePaused = false;
+let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
+let numberOfDucks = 3;
+const ducks = document.querySelectorAll('.duck');
+
+function createDucks(n) {
+  const duckContainer = document.createElement('div');
+  duckContainer.className = 'duck-container';
+
+  for (let i = 1; i <= n; i++) {
+    const duck = document.createElement('div');
+    duck.className = 'duck';
+    duck.id = `duck${i}`;
+    duckContainer.appendChild(duck);
+  }
+
+  document.body.appendChild(duckContainer);
+}
+
+function createShotDivs(n) {
+  const shotDiv = document.getElementById('shot');
+  const bulletDivs = shotDiv.querySelectorAll('.bullet');
+
+  for (let i = 1; i <= n; i++) {
+    const bullet = document.createElement('div');
+    bullet.className = 'bullet';
+    bullet.id = `bullet${bulletDivs.length + i}`;
+    shotDiv.insertBefore(bullet, shotDiv.firstChild);
+  }
+}
+
+
+function createHitDivs(n) {
+  const hitDiv = document.getElementById('hit');
+
+  for (let i = 1; i <= n; i++) {
+    const div = document.createElement('div');
+    hitDiv.insertBefore(div, hitDiv.firstChild);
+  }
+}
+
+function startGame() {
+  document.getElementById('start').style.display = 'none';
+  gamePaused = false;
+  createDucks(numberOfDucks);
+  createShotDivs(numberOfDucks * 2);
+  createHitDivs(numberOfDucks);
+  document.getElementById('dogLaugh').style.display = 'block';
+  showDucks();
+}
 
 const bullets = () => {
-  const bullet = document.querySelector('#shot');
-  return bullet.querySelectorAll(':not(.lost)').length - 1;
+  return document.querySelectorAll('#shot .bullet:not(.lost)').length;;
 };
 
 window.onclick = function (e) {
-  if (bullets() > 0) {
-    decreaseBullet();
-    if (e.target.classList == 'duck') {
-      e.target.classList.add('falling');
-      increaseScore();
-      hit();
+  if (!gamePaused && e.target.tagName !== 'BUTTON') {
+    console.log(bullets());
+    if (bullets() > 0) {
+      decreaseBullet();
+      if (e.target.classList == 'duck') {
+        e.target.classList.add('falling');
+        document.getElementById('dogWithDuck').style.display = 'block';
+        increaseScore();
+        hit();
+      }
     }
   }
 };
 
 const decreaseBullet = () => {
-  const shots = document.querySelectorAll('#bullet3, #bullet2, #bullet1');
-  for (let i = 0; i < shots.length; i++) {
-    const shot = shots[i];
+  const bulletDivs = document.querySelectorAll('#shot .bullet');
+  for (let i = bulletDivs.length; i > 0; i--) {
+    const shot = bulletDivs[i - 1];
     if (!shot.classList.contains('lost')) {
       shot.classList.add('lost');
       break;
@@ -47,6 +98,17 @@ const hit = () => {
     }
   }
 };
+
+ducks.forEach(function (duck) {
+  duck.style.display = 'none';
+});
+
+function showDucks() {
+  ducks.forEach(function (duck) {
+    duck.style.display = 'block';
+  });
+}
+
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'p') {

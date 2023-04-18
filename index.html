@@ -11,16 +11,10 @@
 
   <body>
     <section class="game-stage">
-      <div class="btn-container" id="start"><button onclick="">Play</button></div>
-      <div id="duck1" class="duck"></div>
-      <div id="duck2" class="duck"></div>
-      <div id="duck3" class="duck"></div>
-      <div id="duck4" class="duck"></div>
-      <div id="duck5" class="duck"></div>
-      <div id="duck6" class="duck"></div>
+      <div class="btn-container" id="start"><button onclick="startGame()">Play</button></div>
       <div class="game-end-text-wrap">
         <p id="winner">Yikes, you lost! / You win</p>
-        <div class="btn" id="restart"><button onclick="">Play again!</button></div>
+        <div class="btn" id="restart"><button onclick="restart()">Play again!</button></div>
       </div>
       <div class="dog-container">
         <div class="dog">
@@ -32,19 +26,9 @@
 
     <section class="game-information">
       <div id="shot">
-        <!-- Live one -->
-        <div id="bullet3"></div>
-        <div id="bullet2"></div>
-        <div id="bullet1"></div>
         <h2>Shot</h2>
       </div>
       <div id="hit">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
         <h2>Hit</h2>
       </div>
       <div>
