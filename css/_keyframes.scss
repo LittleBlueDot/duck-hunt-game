@@ -151,10 +151,10 @@
 }
 
 @keyframes dogAppearing{
-  0% { height:0px; }
-	25% { height: 100px; }
-	75% { height: 100px; }
-	100% { height:0px; }
+  0% { bottom:-100px; }
+	25% { bottom: 0px; }
+	75% { bottom: 0px; }
+	100% { bottom:-100px; }
 }
 
 @keyframes dogLaugh {
