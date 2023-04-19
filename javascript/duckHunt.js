@@ -1,8 +1,11 @@
 let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
-let numberOfDucks = 3;
+let numberOfDucks = 2;
 const ducks = document.querySelectorAll('.duck');
+const bullets = () => {
+  return document.querySelectorAll('#shot .bullet:not(.lost)').length;
+};
 
 function createDucks(n) {
   const duckContainer = document.createElement('div');
@@ -14,14 +17,12 @@ function createDucks(n) {
     duck.id = `duck${i}`;
     duckContainer.appendChild(duck);
   }
-
   document.body.appendChild(duckContainer);
 }
 
 function createShotDivs(n) {
   const shotDiv = document.getElementById('shot');
   const bulletDivs = shotDiv.querySelectorAll('.bullet');
-
   for (let i = 1; i <= n; i++) {
     const bullet = document.createElement('div');
     bullet.className = 'bullet';
@@ -30,33 +31,32 @@ function createShotDivs(n) {
   }
 }
 
-
 function createHitDivs(n) {
   const hitDiv = document.getElementById('hit');
-
   for (let i = 1; i <= n; i++) {
     const div = document.createElement('div');
     hitDiv.insertBefore(div, hitDiv.firstChild);
   }
 }
 
+function showDucks() {
+  ducks.forEach(function (duck) {
+    duck.style.display = 'block';
+  });
+}
+
 function startGame() {
   document.getElementById('start').style.display = 'none';
+  document.getElementById('gameOver').style.display = 'none';
   gamePaused = false;
   createDucks(numberOfDucks);
   createShotDivs(numberOfDucks * 2);
   createHitDivs(numberOfDucks);
-  document.getElementById('dogLaugh').style.display = 'block';
   showDucks();
 }
 
-const bullets = () => {
-  return document.querySelectorAll('#shot .bullet:not(.lost)').length;;
-};
-
 window.onclick = function (e) {
   if (!gamePaused && e.target.tagName !== 'BUTTON') {
-    console.log(bullets());
     if (bullets() > 0) {
       decreaseBullet();
       if (e.target.classList == 'duck') {
@@ -64,10 +64,18 @@ window.onclick = function (e) {
         document.getElementById('dogWithDuck').style.display = 'block';
         increaseScore();
         hit();
+      } else {
+        document.getElementById('dogLaugh').style.display = 'block';
       }
     }
-  }
-};
+  };
+}
+
+const dogLaugh = document.getElementById('dogLaugh');
+
+dogLaugh.addEventListener('animationend', () => {
+  dogLaugh.style.display = 'none';
+});
 
 const decreaseBullet = () => {
   const bulletDivs = document.querySelectorAll('#shot .bullet');
@@ -102,13 +110,6 @@ const hit = () => {
 ducks.forEach(function (duck) {
   duck.style.display = 'none';
 });
-
-function showDucks() {
-  ducks.forEach(function (duck) {
-    duck.style.display = 'block';
-  });
-}
-
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'p') {

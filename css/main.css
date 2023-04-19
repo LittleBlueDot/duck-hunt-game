@@ -339,6 +339,10 @@ body {
   position: absolute;
 }
 
+#gameOver {
+  display: none;
+}
+
 #duck1 {
   animation: duckFly 200ms infinite step-end alternate, duck1 15s linear forwards;
 }
