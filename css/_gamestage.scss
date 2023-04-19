@@ -74,6 +74,12 @@ body {
 .falling {
   animation: duckFall 500ms linear forwards !important;
   background-position: -65px -460px !important;
+  // //LBA alternative shot
+  // width: 100px!important;
+  // height: 95px!important;
+  // background-image: url('../img/shot.png')!important;
+  // background-position: top left!important;
+  // animation: shotDisappearing 1s linear forwards !important;
 }
 
 .dog-container {
@@ -116,17 +122,17 @@ body {
   animation: dogAppearing 2s linear forwards;
 }
 
-.dog-intro {
-  width: 100%;
-  #dogSniffing {
-    position: absolute;
-    bottom: 50px;
-    z-index: 2;
-    background: url('https://raw.githubusercontent.com/vaielab/DuckHuntCss/master/sprite.png')
-      no-repeat;
-    width: 120px;
-    height: 100px;
-    animation: dogWalk 10s linear;
+.dogWalking {
+  position: absolute;
+  bottom: 50px;
+  z-index: 2;
+  background: url('../img/sprite.png')
+    no-repeat;
+  width: 120px;
+  height: 100px;
+  animation: dogMove 7s linear forwards, dogWalk 4s step-start 2 forwards;
+  &.jump {
+    animation: dogJump 1s step-start 1 forwards;
   }
 }
 

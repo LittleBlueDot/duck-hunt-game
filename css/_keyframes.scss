@@ -162,12 +162,147 @@
   }
 }
 
-@keyframes dogWalk {
+@keyframes shotDisappearing {
   from {
-    left: 0%;
+    opacity: 1;
   }
   to {
+    opacity: 0;
+  }
+}
+
+@keyframes dogWalk {
+  0% {
+    background-position: 0px 0px;
+  }
+  3% {
+    background-position: -120px 0px;
+  }
+  6% {
+    background-position: -240px 0px;
+  }
+  9% {
+    background-position: -360px 0px;
+  }
+  12% {
+    background-position: 0px 0px;
+  }
+  15% {
+    background-position: -120px 0px;
+  }
+  18% {
+    background-position: -240px 0px;
+  }
+  21% {
+    background-position: -360px 0px;
+  }
+  24% {
+    background-position: 0px 0px;
+  }
+  27% {
+    background-position: -120px 0px;
+  }
+  30% {
+    background-position: -240px 0px;
+  }
+  33% {
+    background-position: -360px 0px;
+  }
+  36% {
+    background-position: 0px 0px;
+  }
+  39% {
+    background-position: -120px 0px;
+  }
+  42% {
+    background-position: -240px 0px;
+  }
+  45% {
+    background-position: -360px 0px;
+  }
+  48% {
+    background-position: 0px 0px;
+  }
+  51% {
+    background-position: -120px 0px;
+  }
+  54% {
+    background-position: -240px 0px;
+  }
+  57% {
+    background-position: -360px 0px;
+  }
+  60% {
+    background-position: 0px 0px;
+  }
+  63% {
+    background-position: -120px 0px;
+  }
+  66% {
+    background-position: -240px 0px;
+  }
+  69% {
+    background-position: -360px 0px;
+  }
+  72% {
+    background-position: 0px 0px;
+  }
+  75% {
+    background-position: -120px 0px;
+  }
+  78% {
+    background-position: -240px 0px;
+  }
+  81% {
+    background-position: -360px 0px;
+  }
+
+  90% {
+    background-position: 0px 0px;
+  }
+  93% {
+    background-position: -120px 0px;
+  }
+  96% {
+    background-position: -240px 0px;
+  }
+  100% {
+    background-position: -360px 0px;
+  }
+}
+
+@keyframes dogJump {
+  0% {
+    background-position: -480px 0px;
+  }
+  15% {
+    background-position: -480px 0px;
+  }
+  25% {
+    background-position: -0px -110px;
+  }
+  50% {
+    background-position: -120px -110px;
+  }
+  75% {
+    background-position: -240px -110px;
+  }
+  100% {
+    background-position: 1000px 1000px;
+  }
+}
+
+@keyframes dogMove {
+  0% {
+    left:0px;
+    opacity: 1;
+  }
+  95%{
+    opacity: 1;
+  }
+  100%{
     left: 90%;
+    opacity: 0;
   }
 }
 
