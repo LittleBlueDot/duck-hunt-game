@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   </head>
 
-  <body>
+  <body onload="dogSniffing()">
     <section class="game-stage">
       <div class="btn-container" id="start"><button onclick="startGame()">Play</button></div>
       <div class="game-end-text-wrap" id="gameOver">
@@ -22,6 +22,10 @@
           <div id="dogWithDuck"></div>
         </div>
       </div>
+    </section>
+
+    <section class="dog-intro">
+      <div id="dogSniffing"></div>
     </section>
 
     <section class="game-information">

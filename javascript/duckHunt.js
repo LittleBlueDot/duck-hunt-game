@@ -1,3 +1,4 @@
+let dogIntro; // LBA added. We will use this variable to clear the setInterval() in dogSniffing()
 let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
@@ -47,6 +48,7 @@ function showDucks() {
 
 function startGame() {
   document.getElementById('start').style.display = 'none';
+  document.getElementById('dogSniffing').style.display = 'none'; // LBA added
   document.getElementById('gameOver').style.display = 'none';
   gamePaused = false;
   createDucks(numberOfDucks);
@@ -54,6 +56,29 @@ function startGame() {
   createHitDivs(numberOfDucks);
   showDucks();
 }
+
+// LBA added start
+
+function dogSniffing() {
+  let position = 0; //start position for the image slicer
+  const interval = 100; //100 ms of interval for the setInterval()
+  dogIntro = setInterval(() => {
+    document.getElementById(
+      'dogSniffing'
+    ).style.backgroundPosition = `-${position}px 0px`;
+    //we use the ES6 template literal to insert the variable "position"
+    if (position < 480) {
+      position = position + 120;
+    }
+    //we increment the position by 120 each time
+    else {
+      position = 120;
+    }
+    //reset the position to 256px, once position exceeds 600px
+  }, interval); //end of setInterval
+} //end of dogSniffing()
+
+// LBA ended
 
 window.onclick = function (e) {
   if (!gamePaused && e.target.tagName !== 'BUTTON') {
@@ -68,8 +93,8 @@ window.onclick = function (e) {
         document.getElementById('dogLaugh').style.display = 'block';
       }
     }
-  };
-}
+  }
+};
 
 const dogLaugh = document.getElementById('dogLaugh');
 
