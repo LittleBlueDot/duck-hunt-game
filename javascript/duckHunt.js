@@ -1,3 +1,4 @@
+let dogIntro; // LBA added. We will use this variable to clear the setInterval() in dogSniffing()
 let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
@@ -58,7 +59,6 @@ function startGame() {
 
 // LBA added start
 
-let dogIntro; //we will use this variable to clear the setInterval()
 function dogSniffing() {
   let position = 0; //start position for the image slicer
   const interval = 100; //100 ms of interval for the setInterval()

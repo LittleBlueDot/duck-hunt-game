@@ -38,32 +38,12 @@ body {
   transform: translate(-50%, 0);
 }
 
-.game-end-text-wrap {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  p {
-    color: $white;
-    text-align: center;
-    font-size: $title-size;
-    margin-bottom: 10px;
-  }
-}
-
 .duck {
   background: url('../img/sprite.png') no-repeat;
   background-position: 0px -220px;
   width: 70px;
   height: 76px;
   position: absolute;
-}
-
-#gameOver {
-  display: none;
 }
 
 #duck1 {
@@ -148,6 +128,26 @@ body {
     height: 100px;
     animation: dogWalk 10s linear;
   }
+}
+
+.game-end-text-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    color: $white;
+    text-align: center;
+    font-size: $title-size;
+    margin-bottom: 10px;
+  }
+}
+
+#gameOver {
+  display: none;
 }
 
 .game-information {
