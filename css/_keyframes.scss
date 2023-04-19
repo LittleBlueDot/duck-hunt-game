@@ -162,6 +162,15 @@
   }
 }
 
+@keyframes dogWalk {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 90%;
+  }
+}
+
 @keyframes dogAppearing {
   0% {
     bottom: -100px;

@@ -267,6 +267,14 @@ select {
     opacity: 0;
   }
 }
+@keyframes dogWalk {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 90%;
+  }
+}
 @keyframes dogAppearing {
   0% {
     bottom: -100px;
@@ -440,8 +448,22 @@ body {
   animation: dogAppearing 2s linear forwards;
 }
 
+.dog-intro {
+  width: 100%;
+}
+.dog-intro #dogSniffing {
+  position: absolute;
+  bottom: 50px;
+  z-index: 2;
+  background: url("https://raw.githubusercontent.com/vaielab/DuckHuntCss/master/sprite.png") no-repeat;
+  width: 120px;
+  height: 100px;
+  animation: dogWalk 10s linear;
+}
+
 .game-information {
   position: absolute;
+  z-index: 3;
   bottom: 10px;
   width: 100%;
   display: flex;
