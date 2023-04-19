@@ -122,7 +122,6 @@ body {
   transform: translate(-50%, 0);
   animation: dogAppearing 2s linear forwards,
     dogLaugh 200ms infinite steps(1) alternate;
-  //animation: dogLaugh 200ms infinite steps(1) alternate;
 }
 
 #dogWithDuck {
@@ -131,6 +130,10 @@ body {
   height: 100px;
   background: url('../img/sprite.png') no-repeat;
   background-position: -650px -5px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  animation: dogAppearing 2s linear forwards;
 }
 
 .game-information {

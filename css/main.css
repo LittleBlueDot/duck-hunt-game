@@ -434,6 +434,10 @@ body {
   height: 100px;
   background: url("../img/sprite.png") no-repeat;
   background-position: -650px -5px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  animation: dogAppearing 2s linear forwards;
 }
 
 .game-information {
