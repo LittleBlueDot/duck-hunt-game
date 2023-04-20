@@ -11,11 +11,31 @@
 
   <body>
     <section class="game-stage">
-      <div class="btn-container" id="start"><button onclick="startGame()">Play</button></div>
-      <div class="game-end-text-wrap" id="gameOver">
+   <!--<div class="btn-container" id="start"><button onclick="startGame()">Play</button></div>-->
+      <div class="game-info-text-wrap" id="gameOver">
         <p id="winner">Yikes, you lost! / You win</p>
         <div class="btn" id="restart"><button onclick="restart()">Play again!</button></div>
       </div>
+
+<!--Levels container starts-->
+
+      <!--<div class="game-info-text-wrap" id="level">
+        <p>Level 1</p>
+      </div>-->
+
+      <!--Levels container ends-->
+
+      <!--End of came total score container starts-->
+      <div class="game-info-text-wrap">
+        <div class="total-score-box">
+          <p><span id="name">[Name],</span><br />your total score:</p>
+          <p id="totalScore">0</p>
+        </div>
+        
+      </div>
+
+<!--End of came total score container ends-->
+
       <div class="dog-container">
         <div class="dog">
           <div id="dogLaugh"></div>

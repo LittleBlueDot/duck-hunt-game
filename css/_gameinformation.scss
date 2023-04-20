@@ -27,7 +27,7 @@
   transform: translate(-50%, 0);
 }
 
-.game-end-text-wrap {
+.game-info-text-wrap {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -38,9 +38,27 @@
   p {
     color: $white;
     text-align: center;
-    font-size: $title-size;
+    font-size: $btn-font-size;
     margin-bottom: 10px;
   }
+}
+
+.total-score-box{
+  @include box(20px, transparentize($color: $body-color, $amount: 0.8));
+  border: 1px solid $body-color;
+  
+  p{
+    color: $body-color;
+    font-family: $title-font;
+    font-size: $title-size;
+    line-height: 1.6;
+    &#totalScore{
+      color: $white;
+    }
+    span{
+      text-transform: uppercase;
+    }  
+    }
 }
 
 #gameOver {
@@ -57,7 +75,7 @@
   gap: 0 20px;
   color: $white;
   & > div {
-    @include box;
+    @include box(5px 10px, #000);
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
