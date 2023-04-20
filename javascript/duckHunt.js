@@ -1,16 +1,40 @@
+const ducksAlive = () => {
+  return document.querySelectorAll('.duck:not(.falling)');
+};
+const bullets = () => {
+  return document.querySelectorAll('#shot .bullet:not(.lost)');
+};
+const dogLaugh = document.getElementById('dogLaugh');
+const maxLevels = 5;
+let currentLevel = 1;
 let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
-let numberOfDucks = 2;
-const ducks = document.querySelectorAll('.duck');
-const bullets = () => {
-  return document.querySelectorAll('#shot .bullet:not(.lost)').length;
-};
 
-function createDucks(n) {
+dogLaugh.addEventListener('animationend', () => {
+  dogLaugh.style.display = 'none';
+});
+
+function startGame() {
+  //const { left } = dogWalk.getBoundingClientRect();
+  document.getElementById('gameOver').style.display = 'none';
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('dogWalk').classList.add('jump');
+  newGame();
+}
+
+function newGame() {
+  gamePaused = false;
+  let numberOfducksAlive = currentLevel + 1;
+  createducksAlive(numberOfducksAlive);
+  createShotDivs(numberOfducksAlive * 2);
+  createHitDivs(numberOfducksAlive);
+  showducksAlive();
+}
+
+function createducksAlive(n) {
   const duckContainer = document.createElement('div');
   duckContainer.className = 'duck-container';
-
   for (let i = 1; i <= n; i++) {
     const duck = document.createElement('div');
     duck.className = 'duck';
@@ -39,46 +63,34 @@ function createHitDivs(n) {
   }
 }
 
-function showDucks() {
-  ducks.forEach(function (duck) {
+function showducksAlive() {
+  ducksAlive().forEach(function (duck) {
     duck.style.display = 'block';
   });
 }
 
-function startGame() {
-  document.getElementById('start').style.display = 'none';
-  document.getElementById('dogWalk').classList.add('jump');
-  document.getElementById('gameOver').style.display = 'none';
-  gamePaused = false;
-  createDucks(numberOfDucks);
-  createShotDivs(numberOfDucks * 2);
-  createHitDivs(numberOfDucks);
-  showDucks();
-}
-
 window.onclick = function (e) {
   if (!gamePaused && e.target.tagName !== 'BUTTON') {
-    if (bullets() > 0) {
-      decreaseBullet();
-      if (e.target.classList == 'duck') {
-        e.target.classList.add('falling');
-        document.getElementById('dogWithDuck').style.display = 'block';
-        increaseScore();
-        hit();
-      } else {
-        document.getElementById('dogLaugh').style.display = 'block';
-      }
+    decreaseBullet();
+    if (e.target.classList == 'duck') {
+      const fallingDuck = e.target;
+      //const x = e.clientX;
+      //const y = e.clientY;
+      fallingDuck.classList.add('falling');
+      document.getElementById('dogWithDuck').style.display = 'block';
+      increaseScore();
+      hit();
+      fallingDuck.addEventListener('animationend', function () {
+        fallingDuck.remove();
+      });
+    } else {
+      document.getElementById('dogLaugh').style.display = 'block';
     }
   }
+  checkGameOver();
 };
 
-const dogLaugh = document.getElementById('dogLaugh');
-
-dogLaugh.addEventListener('animationend', () => {
-  dogLaugh.style.display = 'none';
-});
-
-const decreaseBullet = () => {
+function decreaseBullet() {
   const bulletDivs = document.querySelectorAll('#shot .bullet');
   for (let i = bulletDivs.length; i > 0; i--) {
     const shot = bulletDivs[i - 1];
@@ -87,16 +99,16 @@ const decreaseBullet = () => {
       break;
     }
   }
-};
+}
 
-const increaseScore = () => {
+function increaseScore() {
   const score = document.querySelector('#score').innerHTML;
   const scoreHTML = document.querySelector('#score');
   let count = Number(score);
   scoreHTML.innerHTML = count + 200;
-};
+}
 
-const hit = () => {
+function hit() {
   const hit = document.querySelector('#hit');
   const divs = hit.querySelectorAll('div');
   for (let i = 0; i < divs.length; i++) {
@@ -106,17 +118,74 @@ const hit = () => {
       break;
     }
   }
-};
+}
 
-ducks.forEach(function (duck) {
-  duck.style.display = 'none';
-});
+function checkGameOver() {
+  if (bullets().length == 0 && ducksAlive().length > 0) {
+    document.getElementById('winner').innerHTML = "Yikes! You lost :(";
+    document.getElementById('gameOver').style.display = 'block';
+    restart();
+  } else if (bullets().length >= 0 && ducksAlive().length == 0) {
+    if (currentLevel == 5) {
+      document.getElementById('winner').innerHTML = "You've completed the game! CONGRATULATIONS!";
+      document.getElementById('gameOver').style.display = 'block';
+      restart();
+    } else {
+      document.getElementById('winner').innerHTML = "You've won! NEXT LEVEL!";
+      currentLevel++;
+      newLevel();
+    }
+  }
+}
+
+function restart() {
+  gamePaused = true;
+  currentLevel = 1;
+  document.querySelectorAll('.duck').forEach(duck => {
+    duck.classList.remove('flying');
+    duck.classList.remove('falling');
+  });
+  document.querySelectorAll('.duck').forEach(duck => {
+    duck.parentNode.removeChild(duck);
+  });
+  document.querySelectorAll('#shot div').forEach(shot => {
+    shot.parentNode.removeChild(shot);
+  });
+  document.querySelectorAll('#hit div').forEach(hit => {
+    hit.parentNode.removeChild(hit);
+  });
+  document.querySelector('#score').innerHTML = 0;
+
+  // TODO Refactor this in scss
+  const dogWalk = document.getElementById('dogWalk');
+  dogWalk.classList.remove('jump');
+  const parent = dogWalk.parentNode;
+  parent.removeChild(dogWalk);
+  parent.appendChild(dogWalk);
+}
+
+function newLevel() {
+  document.querySelectorAll('.duck').forEach(duck => {
+    duck.classList.remove('flying');
+    duck.classList.remove('falling');
+  });
+  document.querySelectorAll('.duck').forEach(duck => {
+    duck.parentNode.removeChild(duck);
+  });
+  document.querySelectorAll('#shot div').forEach(shot => {
+    shot.parentNode.removeChild(shot);
+  });
+  document.querySelectorAll('#hit div').forEach(hit => {
+    hit.parentNode.removeChild(hit);
+  });
+  newGame();
+}
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'p') {
     gamePaused = !gamePaused;
     if (gamePaused) {
-      // TODO code to pause the game
+      // TODO
     } else {
       // TODO if the game is no longer paused, resume it (e.g. start animations, re-enable controls)
     }

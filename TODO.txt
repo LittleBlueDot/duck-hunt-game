@@ -3,27 +3,21 @@ CSS:
 1. Look into walking dog animation - coordinate better animations that the walking would be so quick
 2. Different duck images, velocity, flying trajetory.
 3. Check if keyframes need autoprefixers.
+4. Dog walking back when hits the other side of screen;
+5. Birds falling where they are hit;
+6. Dog jumping when player clicks play
 
 HTML / CSS
 
 1. Text / container informing about levels.
-
+2. Sound Effects
+3. Buttons (f) fullscreen, (m) mute (not working) and (p) pause (not working)
+4. Create table desing;
 
 JS:
 
-1. Change bullets order;
-3. End game in cases: a) all lives are used b) all ducks are shot.
-4. Case all lives are used the container with id 'gameOver' appears with the text 'you lost' and Restart button.
-5. Case all ducks are shot the container with id 'gameOver' appears with the text 'you win' and Restart button.
-6. Coordinates get of falling duck, walking dog
-7. Levels 
-
-
------------------------
-
-
-Implement if we have time:
-
-1.	Sound effects
-2.	Btns: a) mute / unmute, c) pause
-4. Table scores
+1. Dog still laughing or with duck at end of game
+2. Dog with duck when hit above 1st level not showing
+3. Buttons mute/unmute and pause;
+4. Save records in table score;
+5. Not overlaping dog with duck and dog laughing
