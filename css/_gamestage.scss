@@ -10,77 +10,63 @@ body {
   height: 82vh;
   display: flex;
   overflow: hidden;
-  button {
-    font-family: $title-font;
-    font-size: $btn-font-size;
-    color: $white;
-    background: $body-color;
-    padding: 10px 20px;
-    border: 3px solid $body-color;
-    border-radius: 50px;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-    animation: pulsate 1.5s ease infinite;
-    cursor: pointer;
-    transition: 0.3s;
-    &:hover,
-    &:focus {
-      color: $body-color;
-      background: transparentize($color: $body-color, $amount: 0.8);
-    }
-  }
-}
-
-.btn-container {
-  position: absolute;
-  max-width: 200px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 0);
 }
 
 .duck {
-  background: url('../img/sprite.png') no-repeat;
-  background-position: 0px -220px;
   width: 70px;
   height: 76px;
   position: absolute;
+  &:nth-child(4n + 1) {
+    background: url('../img/sprite.png') no-repeat;
+    background-position: 0px -220px;
+    animation: duck1Fly 200ms infinite step-end alternate,
+      duck1FlyingTrajectory 13s linear forwards;
+    // animation: duck1Fly 200ms infinite step-end alternate, duck1 15s linear infinite;
+    &.falling {
+      animation: duckFall 800ms linear forwards;
+      background-position: -65px -460px;
+    }
+  }
+  &:nth-child(4n + 2) {
+    background: url('../img/sprite.png') no-repeat;
+    background-position: -260px -220px;
+    animation: duck2Fly 200ms infinite step-end alternate,
+      duck2FlyingTrajectory 10s linear forwards;
+      &.falling {
+        animation: duckFall 800ms linear forwards;
+        background-position: -325px -460px;
+      }
+  }
+  &:nth-child(4n + 3) {
+    background: url('../img/sprite.png') no-repeat;
+    background-position: -520px -220px;
+    animation: duck3Fly 200ms infinite step-end alternate,
+      duck3FlyingTrajectory 8s linear forwards;
+      &.falling {
+        animation: duckFall 800ms linear forwards;
+        background-position: -585px -460px;
+      }
+  }
+  &:nth-child(4n + 4) {
+    background: url('../img/sprite.png') no-repeat;
+    background-position: 0px -220px;
+    animation: duck1Fly 200ms infinite step-end alternate,
+      duck4FlyingTrajectory 10s linear forwards;
+  }
+  &:nth-child(4n + 5) {
+    background: url('../img/sprite.png') no-repeat;
+    background-position: -260px -220px;
+    animation: duck2Fly 200ms infinite step-end alternate,
+      duck5FlyingTrajectory 9s linear forwards;
+  }
+  &:nth-child(4n + 6) {
+    background: url('../img/sprite.png') no-repeat;
+    background-position: -520px -220px;
+    animation: duck3Fly 200ms infinite step-end alternate,
+      duck6FlyingTrajectory 7s linear forwards;
+  }
 }
 
-#duck1 {
-  animation: duckFly 200ms infinite step-end alternate,
-    duck1 15s linear forwards;
-}
-#duck2 {
-  animation: duckFly 200ms infinite step-end alternate,
-    duck2 15s linear forwards;
-}
-#duck3 {
-  animation: duckFly 200ms infinite step-end alternate,
-    duck3 15s linear forwards;
-}
-#duck4 {
-  animation: duckFly 200ms infinite step-end alternate,
-    duck4 15s linear forwards;
-}
-#duck5 {
-  animation: duckFly 200ms infinite step-end alternate,
-    duck5 15s linear forwards;
-}
-#duck6 {
-  animation: duckFly 200ms infinite step-end alternate,
-    duck6 15s linear forwards;
-}
-
-.falling {
-    animation: duckFall 500ms linear forwards !important;
-  background-position: -65px -460px !important;
-  // //LBA alternative shot
-  // width: 100px !important;
-  // height: 95px !important;
-  // background-image: url('../img/shot.png') !important;
-  // background-position: top left !important;
-  // animation: shotDisappearing 1s linear forwards !important;
-}
 
 .dog-container {
   position: absolute;
@@ -135,70 +121,4 @@ body {
   }
 }
 
-.game-end-text-wrap {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  p {
-    color: $white;
-    text-align: center;
-    font-size: $title-size;
-    margin-bottom: 10px;
-  }
-}
 
-#gameOver {
-  display: none;
-}
-
-.game-information {
-  position: absolute;
-  z-index: 3;
-  bottom: 10px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 0 20px;
-  color: $white;
-  & > div {
-    @include box;
-    display: flex;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 5px 2px;
-    h2 {
-      font-family: $title-font;
-      font-size: $title-size;
-      flex-basis: 100%;
-    }
-  }
-}
-
-#shot {
-  & > div {
-    width: 20px;
-    height: 20px;
-    background: url('../img/sprite.png') no-repeat;
-    background-position: 0px -557px;
-    &.lost {
-      background: transparent;
-    }
-  }
-}
-
-#hit {
-  & > div {
-    width: 20px;
-    height: 20px;
-    background: url('../img/sprite.png') no-repeat;
-    background-position: -52px -557px;
-    &.success {
-      background: url('../img/sprite.png') no-repeat;
-      background-position: -25px -557px;
-    }
-  }
-}

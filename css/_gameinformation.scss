@@ -1,0 +1,145 @@
+.game-stage {
+  button {
+    font-family: $title-font;
+    font-size: $btn-font-size;
+    color: $white;
+    background: $body-color;
+    padding: 10px 20px;
+    border: 3px solid $body-color;
+    border-radius: 50px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    animation: pulsate 1.5s ease infinite;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover,
+    &:focus {
+      color: $body-color;
+      background: transparentize($color: $body-color, $amount: 0.8);
+    }
+  }
+}
+
+.btn-container {
+  position: absolute;
+  max-width: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.game-info-text-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p,
+  label {
+    color: $white;
+    text-align: center;
+    font-size: $btn-font-size;
+    margin-bottom: 10px;
+  }
+  input {
+    margin-top: 10px;
+    min-width: 281px;
+    color: $white;
+    font-size: $title-size;
+    text-transform: uppercase;
+    padding: 10px 5px 5px 2px;
+    border-radius: 0px;
+    border: none;
+    background: transparent;
+    border-bottom: 3px solid $white;
+    transition: 0.3s;
+    &:hover,
+    &:focus,
+    &:active {
+      border: none;
+      border-bottom: 3px solid transparentize($white, 0.5);
+      background: transparent;
+    }
+    &:active {
+      border-bottom: 3px solid $white;
+    }
+    &::placeholder {
+      color: transparentize($color: $white, $amount: 0.4);
+      text-transform: none;
+    }
+  }
+}
+
+.total-score-box {
+  @include box(20px, transparentize($color: $body-color, $amount: 0.8));
+  border: 1px solid $body-color;
+
+  p {
+    color: $body-color;
+    font-family: $title-font;
+    font-size: $title-size;
+    line-height: 1.6;
+    &#totalScore {
+      color: $white;
+    }
+    span {
+      text-transform: uppercase;
+    }
+  }
+}
+
+#gameOver {
+  display: none;
+}
+
+.game-information {
+  position: absolute;
+  z-index: 3;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0 20px;
+  color: $white;
+  & > div {
+    @include box(5px 10px, #000);
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 5px 2px;
+    p {
+      font-size: $title-size;
+    }
+    h2 {
+      font-family: $title-font;
+      font-size: $title-size;
+      flex-basis: 100%;
+    }
+  }
+}
+
+#shot {
+  & > div {
+    width: 20px;
+    height: 20px;
+    background: url('../img/sprite.png') no-repeat;
+    background-position: 0px -557px;
+    &.lost {
+      background: transparent;
+    }
+  }
+}
+
+#hit {
+  & > div {
+    width: 20px;
+    height: 20px;
+    background: url('../img/sprite.png') no-repeat;
+    background-position: -52px -557px;
+    &.success {
+      background: url('../img/sprite.png') no-repeat;
+      background-position: -25px -557px;
+    }
+  }
+}

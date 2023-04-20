@@ -10,7 +10,6 @@ let currentLevel = 1;
 let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
-
 dogLaugh.addEventListener('animationend', () => {
   dogLaugh.style.display = 'none';
 });

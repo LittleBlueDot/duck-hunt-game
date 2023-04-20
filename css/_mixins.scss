@@ -1,6 +1,7 @@
-@mixin box {
-    padding: 5px 10px;
-    background: #000;
+@mixin box($padding, $background) {
+    padding: $padding;
+    background: $background;
     border-radius: 5px;
     border: $border;
+    box-shadow: $box-shadow;
 }
