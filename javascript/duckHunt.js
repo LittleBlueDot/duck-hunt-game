@@ -1,8 +1,6 @@
-const ducks = () => {
+const ducksAlive = () => {
   return document.querySelectorAll('.duck:not(.falling)');
 };
-const shots = document.querySelectorAll('#shot div');
-const dogs = document.querySelectorAll('.dog');
 const bullets = () => {
   return document.querySelectorAll('#shot .bullet:not(.lost)');
 };
@@ -12,17 +10,10 @@ let currentLevel = 1;
 let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
-let numberOfDucks = currentLevel + 1;
 
 dogLaugh.addEventListener('animationend', () => {
   dogLaugh.style.display = 'none';
 });
-
-/*
-ducks().forEach(function (duck) {
-  duck.style.display = 'none';
-});
-*/
 
 function startGame() {
   //const { left } = dogWalk.getBoundingClientRect();
@@ -34,13 +25,14 @@ function startGame() {
 
 function newGame() {
   gamePaused = false;
-  createDucks(numberOfDucks);
-  createShotDivs(numberOfDucks * 2);
-  createHitDivs(numberOfDucks);
-  showDucks();
+  let numberOfducksAlive = currentLevel + 1;
+  createducksAlive(numberOfducksAlive);
+  createShotDivs(numberOfducksAlive * 2);
+  createHitDivs(numberOfducksAlive);
+  showducksAlive();
 }
 
-function createDucks(n) {
+function createducksAlive(n) {
   const duckContainer = document.createElement('div');
   duckContainer.className = 'duck-container';
   for (let i = 1; i <= n; i++) {
@@ -71,8 +63,8 @@ function createHitDivs(n) {
   }
 }
 
-function showDucks() {
-  ducks().forEach(function (duck) {
+function showducksAlive() {
+  ducksAlive().forEach(function (duck) {
     duck.style.display = 'block';
   });
 }
@@ -129,18 +121,17 @@ function hit() {
 }
 
 function checkGameOver() {
-  if (bullets().length == 0 && ducks().length > 0) {
+  if (bullets().length == 0 && ducksAlive().length > 0) {
     document.getElementById('winner').innerHTML = "Yikes! You lost :(";
     document.getElementById('gameOver').style.display = 'block';
     restart();
-  } else if (bullets().length >= 0 && ducks().length == 0) {
+  } else if (bullets().length >= 0 && ducksAlive().length == 0) {
     if (currentLevel == 5) {
       document.getElementById('winner').innerHTML = "You've completed the game! CONGRATULATIONS!";
       document.getElementById('gameOver').style.display = 'block';
       restart();
     } else {
       document.getElementById('winner').innerHTML = "You've won! NEXT LEVEL!";
-      document.getElementById('gameOver').style.display = 'block';
       currentLevel++;
       newLevel();
     }
@@ -164,6 +155,7 @@ function restart() {
     hit.parentNode.removeChild(hit);
   });
   document.querySelector('#score').innerHTML = 0;
+
   // TODO Refactor this in scss
   const dogWalk = document.getElementById('dogWalk');
   dogWalk.classList.remove('jump');
