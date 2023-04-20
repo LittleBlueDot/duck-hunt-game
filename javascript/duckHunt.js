@@ -2,9 +2,14 @@ let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
 let numberOfDucks = 2;
-const ducks = document.querySelectorAll('.duck');
+const ducks = () => {
+  return document.querySelectorAll('.duck:not(.falling)');
+};
+const shots = document.querySelectorAll('#shot div');
+const dogs = document.querySelectorAll('.dog');
+
 const bullets = () => {
-  return document.querySelectorAll('#shot .bullet:not(.lost)').length;
+  return document.querySelectorAll('#shot .bullet:not(.lost)');
 };
 
 function createDucks(n) {
@@ -40,13 +45,16 @@ function createHitDivs(n) {
 }
 
 function showDucks() {
-  ducks.forEach(function (duck) {
+  ducks().forEach(function (duck) {
     duck.style.display = 'block';
   });
 }
 
 function startGame() {
   document.getElementById('start').style.display = 'none';
+
+  // TODO Coordenada x de onde está o dog quando inicia o jogo;
+  const { left } = dogWalk.getBoundingClientRect();
   document.getElementById('dogWalk').classList.add('jump');
   document.getElementById('gameOver').style.display = 'none';
   gamePaused = false;
@@ -58,19 +66,64 @@ function startGame() {
 
 window.onclick = function (e) {
   if (!gamePaused && e.target.tagName !== 'BUTTON') {
-    if (bullets() > 0) {
-      decreaseBullet();
-      if (e.target.classList == 'duck') {
-        e.target.classList.add('falling');
-        document.getElementById('dogWithDuck').style.display = 'block';
-        increaseScore();
-        hit();
-      } else {
-        document.getElementById('dogLaugh').style.display = 'block';
-      }
+    decreaseBullet();
+    if (e.target.classList == 'duck') {
+      const fallingDuck = e.target;
+
+      // TODO Coordenadas de onde cai o passareco
+      const x = e.clientX;
+      const y = e.clientY;
+      fallingDuck.classList.add('falling');
+      document.getElementById('dogWithDuck').style.display = 'block';
+      increaseScore();
+      hit();
+      fallingDuck.addEventListener('animationend', function () {
+        fallingDuck.remove();
+      });
+    } else {
+      document.getElementById('dogLaugh').style.display = 'block';
     }
   }
+  checkGameOver();
 };
+
+function checkGameOver() {
+  console.log(bullets().length);
+  console.log(ducks().length);
+  if (bullets().length == 0 && ducks().length > 0) {
+    document.getElementById('winner').innerHTML = "Yikes! You lost :(";
+    document.getElementById('gameOver').style.display = 'block';
+    restart();
+  } else if (bullets().length >= 0 && ducks().length == 0) {
+    document.getElementById('winner').innerHTML = "You've won!";
+    document.getElementById('gameOver').style.display = 'block';
+    restart();
+  }
+}
+
+function restart() {
+  gamePaused = true;
+  document.querySelectorAll('.duck').forEach(duck => {
+    duck.classList.remove('flying');
+    duck.classList.remove('falling');
+  });
+  document.querySelectorAll('.duck').forEach(duck => {
+    duck.parentNode.removeChild(duck);
+  });
+  document.querySelectorAll('#shot div').forEach(shot => {
+    shot.parentNode.removeChild(shot);
+  });
+  document.querySelectorAll('#hit div').forEach(hit => {
+    hit.parentNode.removeChild(hit);
+  });
+  clearScore();
+  // TODO Refactor this in scss
+  const dogWalk = document.getElementById('dogWalk');
+  dogWalk.classList.remove('jump');
+  const parent = dogWalk.parentNode;
+  parent.removeChild(dogWalk);
+  parent.appendChild(dogWalk);
+}
 
 const dogLaugh = document.getElementById('dogLaugh');
 
@@ -96,6 +149,10 @@ const increaseScore = () => {
   scoreHTML.innerHTML = count + 200;
 };
 
+function clearScore() {
+  document.querySelector('#score').innerHTML = 0;
+}
+
 const hit = () => {
   const hit = document.querySelector('#hit');
   const divs = hit.querySelectorAll('div');
@@ -108,7 +165,7 @@ const hit = () => {
   }
 };
 
-ducks.forEach(function (duck) {
+ducks().forEach(function (duck) {
   duck.style.display = 'none';
 });
 
@@ -116,7 +173,7 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'p') {
     gamePaused = !gamePaused;
     if (gamePaused) {
-      // TODO code to pause the game
+      // TODO
     } else {
       // TODO if the game is no longer paused, resume it (e.g. start animations, re-enable controls)
     }
