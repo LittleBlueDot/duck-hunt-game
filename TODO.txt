@@ -2,6 +2,11 @@
 CSS:
 1. Look into walking dog animation - coordinate better animations that the walking would be so quick
 2. Different duck images, velocity, flying trajetory.
+3. Check if keyframes need autoprefixers.
+
+HTML / CSS
+
+1. Text / container informing about levels.
 
 
 JS:
@@ -11,7 +16,7 @@ JS:
 4. Case all lives are used the container with id 'gameOver' appears with the text 'you lost' and Restart button.
 5. Case all ducks are shot the container with id 'gameOver' appears with the text 'you win' and Restart button.
 6. Coordinates get of falling duck, walking dog
-7. Levels
+7. Levels 
 
 
 -----------------------
