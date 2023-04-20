@@ -1,7 +1,9 @@
+const maxLevels = 5;
+let currentLevel = 1;
 let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
-let numberOfDucks = 2;
+let numberOfDucks;
 const ducks = () => {
   return document.querySelectorAll('.duck:not(.falling)');
 };
@@ -56,8 +58,14 @@ function startGame() {
   // TODO Coordenada x de onde está o dog quando inicia o jogo;
   const { left } = dogWalk.getBoundingClientRect();
   document.getElementById('dogWalk').classList.add('jump');
+  newGame(2);
+}
+
+function newGame(n) {
+  currentLevel = n - 1;
   document.getElementById('gameOver').style.display = 'none';
   gamePaused = false;
+  numberOfDucks = n;
   createDucks(numberOfDucks);
   createShotDivs(numberOfDucks * 2);
   createHitDivs(numberOfDucks);
@@ -95,14 +103,34 @@ function checkGameOver() {
     document.getElementById('gameOver').style.display = 'block';
     restart();
   } else if (bullets().length >= 0 && ducks().length == 0) {
-    document.getElementById('winner').innerHTML = "You've won!";
-    document.getElementById('gameOver').style.display = 'block';
-    restart();
+    if (currentLevel == 5) {
+      document.getElementById('winner').innerHTML = "You've completed the game! CONGRATULATIONS!";
+      document.getElementById('gameOver').style.display = 'block';
+      restart();
+    } else {
+      document.getElementById('winner').innerHTML = "You've won! NEXT LEVEL!";
+      document.getElementById('gameOver').style.display = 'block';
+      document.querySelectorAll('.duck').forEach(duck => {
+        duck.classList.remove('flying');
+        duck.classList.remove('falling');
+      });
+      document.querySelectorAll('.duck').forEach(duck => {
+        duck.parentNode.removeChild(duck);
+      });
+      document.querySelectorAll('#shot div').forEach(shot => {
+        shot.parentNode.removeChild(shot);
+      });
+      document.querySelectorAll('#hit div').forEach(hit => {
+        hit.parentNode.removeChild(hit);
+      });
+      newGame(currentLevel + 2);
+    }
   }
 }
 
 function restart() {
   gamePaused = true;
+  currentLevel = 1;
   document.querySelectorAll('.duck').forEach(duck => {
     duck.classList.remove('flying');
     duck.classList.remove('falling');
