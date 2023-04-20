@@ -35,30 +35,58 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  p {
+  p,
+  label {
     color: $white;
     text-align: center;
     font-size: $btn-font-size;
     margin-bottom: 10px;
   }
+  input {
+    margin-top: 10px;
+    min-width: 281px;
+    color: $white;
+    font-size: $title-size;
+    text-transform: uppercase;
+    padding: 10px 5px 5px 2px;
+    border-radius: 0px;
+    border: none;
+    background: transparent;
+    border-bottom: 3px solid $white;
+    transition: 0.3s;
+    &:hover,
+    &:focus,
+    &:active {
+      border: none;
+      border-bottom: 3px solid transparentize($white, 0.5);
+      background: transparent;
+    }
+    &:active {
+      border-bottom: 3px solid $white;
+    }
+    &::placeholder {
+      color: transparentize($color: $white, $amount: 0.4);
+      text-transform: none;
+    }
+  }
 }
 
-.total-score-box{
+.total-score-box {
   @include box(20px, transparentize($color: $body-color, $amount: 0.8));
   border: 1px solid $body-color;
-  
-  p{
+
+  p {
     color: $body-color;
     font-family: $title-font;
     font-size: $title-size;
     line-height: 1.6;
-    &#totalScore{
+    &#totalScore {
       color: $white;
     }
-    span{
+    span {
       text-transform: uppercase;
-    }  
     }
+  }
 }
 
 #gameOver {
@@ -80,8 +108,8 @@
     align-items: flex-end;
     flex-wrap: wrap;
     gap: 5px 2px;
-    p{
-        font-size: $title-size;
+    p {
+      font-size: $title-size;
     }
     h2 {
       font-family: $title-font;

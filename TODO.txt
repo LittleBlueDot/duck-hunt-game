@@ -5,9 +5,6 @@ CSS:
 
 HTML / CSS
 
-1. Text / container informing about levels.
-2. Input to insert you name in the beginning of the game
-3.  Table with a total score and your name in the end of the game
 
 
 JS:

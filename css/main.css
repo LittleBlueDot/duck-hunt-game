@@ -50,12 +50,20 @@ textarea {
   margin: 0; /* 2 */
 }
 
+/* Remove blue border around */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
 button,
-input { /* 1 */
+input {
+  /* 1 */
   overflow: visible;
 }
 
@@ -64,7 +72,8 @@ input { /* 1 */
  * 1. Remove the inheritance of text transform in Firefox.
  */
 button,
-select { /* 1 */
+select {
+  /* 1 */
   text-transform: none;
 }
 
@@ -624,11 +633,37 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.game-info-text-wrap p {
+.game-info-text-wrap p,
+.game-info-text-wrap label {
   color: #fff;
   text-align: center;
   font-size: 2rem;
   margin-bottom: 10px;
+}
+.game-info-text-wrap input {
+  margin-top: 10px;
+  min-width: 281px;
+  color: #fff;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 10px 5px 5px 2px;
+  border-radius: 0px;
+  border: none;
+  background: transparent;
+  border-bottom: 3px solid #fff;
+  transition: 0.3s;
+}
+.game-info-text-wrap input:hover, .game-info-text-wrap input:focus, .game-info-text-wrap input:active {
+  border: none;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+}
+.game-info-text-wrap input:active {
+  border-bottom: 3px solid #fff;
+}
+.game-info-text-wrap input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: none;
 }
 
 .total-score-box {

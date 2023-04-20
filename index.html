@@ -1,66 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Duck Hunt Game</title>
-    <link rel="stylesheet" type="text/css" href="/css/main.css" media="all" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  </head>
 
-  <body>
-    <section class="game-stage">
-   <!--<div class="btn-container" id="start"><button onclick="startGame()">Play</button></div>-->
-      <div class="game-info-text-wrap" id="gameOver">
-        <p id="winner">Yikes, you lost! / You win</p>
-        <div class="btn" id="restart"><button onclick="restart()">Play again!</button></div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duck Hunt Game</title>
+  <link rel="stylesheet" type="text/css" href="/css/main.css" media="all" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
 
-<!--Levels container starts-->
+<body>
+  <section class="game-stage">
+  <div class="btn-container" id="start"><button onclick="startGame()">Play</button></div>
+    <div class="game-info-text-wrap" id="gameOver">
+      <p id="winner">Yikes, you lost! / You win</p>
+      <div class="btn" id="restart"><button onclick="restart()">Play again!</button></div>
+    </div>
+    <!---------------------------------->
+    <!--Levels container starts-->
+    <!---------------------------------->
 
-      <!--<div class="game-info-text-wrap" id="level">
+    <!--<div class="game-info-text-wrap" id="level">
         <p>Level 1</p>
       </div>-->
+    <!---------------------------------->
+    <!--Levels container ends-->
+    <!---------------------------------->
 
-      <!--Levels container ends-->
+    <!-------------------------------------------->
+    <!--Start of insert name form -->
+    <!-------------------------------------------->
 
-      <!--End of came total score container starts-->
-      <div class="game-info-text-wrap">
-        <div class="total-score-box">
-          <p><span id="name">[Name],</span><br />your total score:</p>
-          <p id="totalScore">0</p>
-        </div>
-        
+    <!--<div class="game-info-text-wrap">
+      <form id="insertName"> 
+        <label for="name">What's your name?</label><br/> 
+        <input name="name" id="name" placeholder="Insert your name" autocomplete="off"> 
+      </form>
+    </div>-->
+
+    <!------------------------------------------->
+    <!--End of insert name -->
+    <!------------------------------------------->
+
+    <!-------------------------------------------->
+    <!--Start total score container starts-->
+    <!-------------------------------------------->
+
+    <!--<div class="game-info-text-wrap">
+      <div class="total-score-box">
+        <p><span id="name">[Name],</span><br />your total score:</p>
+        <p id="totalScore">0</p>
       </div>
+    </div>-->
 
-<!--End of came total score container ends-->
+    <!------------------------------------------->
+    <!--End total score container ends--->
+    <!------------------------------------------->
 
-      <div class="dog-container">
-        <div class="dog">
-          <div id="dogLaugh"></div>
-          <div id="dogWithDuck"></div>
-        </div>
+
+    <div class="dog-container">
+      <div class="dog">
+        <div id="dogLaugh"></div>
+        <div id="dogWithDuck"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="dog-intro">
-      <div id="dogWalk"></div>
-    </section>
+  <section class="dog-intro">
+    <div id="dogWalk"></div>
+  </section>
 
-    <section class="game-information">
-      <div id="shot">
-        <h2>Shot</h2>
-      </div>
-      <div id="hit">
-        <h2>Hit</h2>
-      </div>
-      <div>
-        <p id="score">0</p>
-        <h2>Score</h2>
-      </div>
-    </section>
+  <section class="game-information">
+    <div id="shot">
+      <h2>Shot</h2>
+    </div>
+    <div id="hit">
+      <h2>Hit</h2>
+    </div>
+    <div>
+      <p id="score">0</p>
+      <h2>Score</h2>
+    </div>
+  </section>
 
-    <script type="text/javascript" src="/javascript/duckHunt.js"></script>
-  </body>
+  <script type="text/javascript" src="/javascript/duckHunt.js"></script>
+</body>
+
 </html>
