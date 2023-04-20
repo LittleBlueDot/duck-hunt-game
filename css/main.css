@@ -123,7 +123,7 @@ select {
     transform: scale(1);
   }
 }
-@keyframes duckFly {
+@keyframes duck1Fly {
   0% {
     background-position: 0px -220px;
   }
@@ -137,11 +137,66 @@ select {
     background-position: -170px -220px;
   }
 }
-@keyframes duck1 {
+@keyframes duck2Fly {
+  0% {
+    background-position: -260px -220px;
+  }
+  33% {
+    background-position: -340px -220px;
+  }
+  66% {
+    background-position: -422px -220px;
+  }
+  100% {
+    background-position: -422px -220px;
+  }
+}
+@keyframes duck3Fly {
+  0% {
+    background-position: -520px -220px;
+  }
+  33% {
+    background-position: -600px -220px;
+  }
+  66% {
+    background-position: -682px -220px;
+  }
+  100% {
+    background-position: -682px -220px;
+  }
+}
+@keyframes duck1FlyingTrajectory {
   0% {
     left: -100px;
     top: 0px;
     opacity: 1;
+  }
+  33% {
+    top: 200px;
+  }
+  66% {
+    top: 100px;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 70px);
+    top: 300px;
+    opacity: 0;
+  }
+}
+@keyframes duck2FlyingTrajectory {
+  0% {
+    left: -100px;
+    top: 300px;
+    opacity: 1;
+  }
+  33% {
+    top: 350px;
+  }
+  66% {
+    top: 100px;
   }
   98% {
     opacity: 1;
@@ -152,36 +207,14 @@ select {
     opacity: 0;
   }
 }
-@keyframes duck2 {
-  0% {
-    left: -100px;
-    top: 300px;
-    opacity: 1;
-  }
-  50% {
-    left: 200px;
-    top: 0px;
-    opacity: 1;
-  }
-  98% {
-    opacity: 1;
-  }
-  100% {
-    left: calc(100% - 70px);
-    top: 100px;
-    opacity: 0;
-  }
-}
-@keyframes duck3 {
+@keyframes duck3FlyingTrajectory {
   0% {
     left: -100px;
     top: 200px;
     opacity: 1;
   }
   50% {
-    left: 600px;
     top: 0px;
-    opacity: 1;
   }
   98% {
     opacity: 1;
@@ -192,14 +225,13 @@ select {
     opacity: 0;
   }
 }
-@keyframes duck4 {
+@keyframes duck4FlyingTrajectory {
   0% {
     left: -100px;
     top: 100px;
     opacity: 1;
   }
-  50% {
-    left: 800px;
+  33% {
     top: 500px;
     opacity: 1;
   }
@@ -212,16 +244,14 @@ select {
     opacity: 0;
   }
 }
-@keyframes duck5 {
+@keyframes duck5FlyingTrajectory {
   0% {
     left: -100px;
     top: 600px;
     opacity: 1;
   }
-  50% {
-    left: 600px;
+  60% {
     top: 0px;
-    opacity: 1;
   }
   98% {
     opacity: 1;
@@ -232,28 +262,21 @@ select {
     opacity: 0;
   }
 }
-@keyframes duck6 {
+@keyframes duck6FlyingTrajectory {
   0% {
     left: -100px;
     top: 100px;
     opacity: 1;
   }
-  30% {
-    left: 800px;
-    top: 150px;
-    opacity: 1;
-  }
-  60% {
-    left: 1000px;
-    top: 0px;
-    opacity: 1;
+  50% {
+    top: 250px;
   }
   98% {
     opacity: 1;
   }
   100% {
     left: calc(100% - 70px);
-    top: 0px;
+    top: 350px;
     opacity: 0;
   }
 }
@@ -484,40 +507,51 @@ body {
 }
 
 .duck {
-  background: url("../img/sprite.png") no-repeat;
-  background-position: 0px -220px;
   width: 70px;
   height: 76px;
   position: absolute;
 }
-
-#duck1 {
-  animation: duckFly 200ms infinite step-end alternate, duck1 15s linear forwards;
+.duck:nth-child(4n+1) {
+  background: url("../img/sprite.png") no-repeat;
+  background-position: 0px -220px;
+  animation: duck1Fly 200ms infinite step-end alternate, duck1FlyingTrajectory 13s linear forwards;
 }
-
-#duck2 {
-  animation: duckFly 200ms infinite step-end alternate, duck2 15s linear forwards;
+.duck:nth-child(4n+1).falling {
+  animation: duckFall 800ms linear forwards;
+  background-position: -65px -460px;
 }
-
-#duck3 {
-  animation: duckFly 200ms infinite step-end alternate, duck3 15s linear forwards;
+.duck:nth-child(4n+2) {
+  background: url("../img/sprite.png") no-repeat;
+  background-position: -260px -220px;
+  animation: duck2Fly 200ms infinite step-end alternate, duck2FlyingTrajectory 10s linear forwards;
 }
-
-#duck4 {
-  animation: duckFly 200ms infinite step-end alternate, duck4 15s linear forwards;
+.duck:nth-child(4n+2).falling {
+  animation: duckFall 800ms linear forwards;
+  background-position: -325px -460px;
 }
-
-#duck5 {
-  animation: duckFly 200ms infinite step-end alternate, duck5 15s linear forwards;
+.duck:nth-child(4n+3) {
+  background: url("../img/sprite.png") no-repeat;
+  background-position: -520px -220px;
+  animation: duck3Fly 200ms infinite step-end alternate, duck3FlyingTrajectory 8s linear forwards;
 }
-
-#duck6 {
-  animation: duckFly 200ms infinite step-end alternate, duck6 15s linear forwards;
+.duck:nth-child(4n+3).falling {
+  animation: duckFall 800ms linear forwards;
+  background-position: -585px -460px;
 }
-
-.falling {
-  animation: duckFall 500ms linear forwards !important;
-  background-position: -65px -460px !important;
+.duck:nth-child(4n+4) {
+  background: url("../img/sprite.png") no-repeat;
+  background-position: 0px -220px;
+  animation: duck1Fly 200ms infinite step-end alternate, duck4FlyingTrajectory 10s linear forwards;
+}
+.duck:nth-child(4n+5) {
+  background: url("../img/sprite.png") no-repeat;
+  background-position: -260px -220px;
+  animation: duck2Fly 200ms infinite step-end alternate, duck5FlyingTrajectory 9s linear forwards;
+}
+.duck:nth-child(4n+6) {
+  background: url("../img/sprite.png") no-repeat;
+  background-position: -520px -220px;
+  animation: duck3Fly 200ms infinite step-end alternate, duck6FlyingTrajectory 7s linear forwards;
 }
 
 .dog-container {

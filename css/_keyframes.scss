@@ -10,7 +10,7 @@
   }
 }
 
-@keyframes duckFly {
+@keyframes duck1Fly {
   0% {
     background-position: 0px -220px;
   }
@@ -25,11 +25,88 @@
   }
 }
 
-@keyframes duck1 {
+@keyframes duck2Fly {
+  0% {
+    background-position: -260px -220px;
+  }
+  33% {
+    background-position: -340px -220px;
+  }
+  66% {
+    background-position: -422px -220px;
+  }
+  100% {
+    background-position: -422px -220px;
+  }
+}
+
+@keyframes duck3Fly {
+  0% {
+    background-position: -520px -220px;
+  }
+  33% {
+    background-position: -600px -220px;
+  }
+  66% {
+    background-position: -682px -220px;
+  }
+  100% {
+    background-position: -682px -220px;
+  }
+}
+
+// @keyframes duck1 {
+//   0% {
+//     left: 0px;
+//     top: 0px;
+//   }
+//   33% {
+//     left: calc(100% - 70px);
+//     top: 400px;
+//   }
+//   66% {
+//     left: 50%;
+//     top: 200px;
+//   }
+//   100% {
+//     left: 0;
+//     top: 200px;
+//   }
+// }
+
+@keyframes duck1FlyingTrajectory {
   0% {
     left: -100px;
     top: 0px;
     opacity: 1;
+  }
+  33% {
+    top: 200px;
+  }
+  66% {
+    top: 100px;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 70px);
+    top: 300px;
+    opacity: 0;
+  }
+}
+
+@keyframes duck2FlyingTrajectory {
+  0% {
+    left: -100px;
+    top: 300px;
+    opacity: 1;
+  }
+  33% {
+    top: 350px;
+  }
+  66% {
+    top: 100px;
   }
   98% {
     opacity: 1;
@@ -41,37 +118,14 @@
   }
 }
 
-@keyframes duck2 {
-  0% {
-    left: -100px;
-    top: 300px;
-    opacity: 1;
-  }
-  50% {
-    left: 200px;
-    top: 0px;
-    opacity: 1;
-  }
-  98% {
-    opacity: 1;
-  }
-  100% {
-    left: calc(100% - 70px);
-    top: 100px;
-    opacity: 0;
-  }
-}
-
-@keyframes duck3 {
+@keyframes duck3FlyingTrajectory {
   0% {
     left: -100px;
     top: 200px;
     opacity: 1;
   }
   50% {
-    left: 600px;
     top: 0px;
-    opacity: 1;
   }
   98% {
     opacity: 1;
@@ -83,14 +137,13 @@
   }
 }
 
-@keyframes duck4 {
+@keyframes duck4FlyingTrajectory {
   0% {
     left: -100px;
     top: 100px;
     opacity: 1;
   }
-  50% {
-    left: 800px;
+  33% {
     top: 500px;
     opacity: 1;
   }
@@ -104,16 +157,14 @@
   }
 }
 
-@keyframes duck5 {
+@keyframes duck5FlyingTrajectory {
   0% {
     left: -100px;
     top: 600px;
     opacity: 1;
   }
-  50% {
-    left: 600px;
+  60% {
     top: 0px;
-    opacity: 1;
   }
   98% {
     opacity: 1;
@@ -125,28 +176,21 @@
   }
 }
 
-@keyframes duck6 {
+@keyframes duck6FlyingTrajectory {
   0% {
     left: -100px;
     top: 100px;
     opacity: 1;
   }
-  30% {
-    left: 800px;
-    top: 150px;
-    opacity: 1;
-  }
-  60% {
-    left: 1000px;
-    top: 0px;
-    opacity: 1;
+  50% {
+    top: 250px;
   }
   98% {
     opacity: 1;
   }
   100% {
     left: calc(100% - 70px);
-    top: 0px;
+    top: 350px;
     opacity: 0;
   }
 }

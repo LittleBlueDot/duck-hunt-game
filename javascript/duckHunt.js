@@ -1,7 +1,7 @@
 let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
-let numberOfDucks = 2;
+let numberOfDucks = 6;
 const ducks = document.querySelectorAll('.duck');
 const bullets = () => {
   return document.querySelectorAll('#shot .bullet:not(.lost)').length;
