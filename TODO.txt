@@ -1,25 +1,17 @@
-Game: 6 ducks, 3 lives, 1 duck - 200 points?
 
-
-
-CSS animations:
+CSS:
 1. Look into walking dog animation - coordinate better animations that the walking would be so quick
+2. Different duck images, velocity, flying trajetory.
 
-
-HTML / CSS:
-
-1. Play / Start Btn
-2. End of game text: You won! / Yikes, you lost!
-3. Play again btn
 
 JS:
 
 1. Change bullets order;
-2. Add class 'jump' to the container 'dogWalking' when the button Play is clicked
 3. End game in cases: a) all lives are used b) all ducks are shot.
 4. Case all lives are used the container with id 'gameOver' appears with the text 'you lost' and Restart button.
 5. Case all ducks are shot the container with id 'gameOver' appears with the text 'you win' and Restart button.
-6. Coordinates get of falling duck.
+6. Coordinates get of falling duck, walking dog
+7. Levels
 
 
 -----------------------
@@ -29,4 +21,4 @@ Implement if we have time:
 
 1.	Sound effects
 2.	Btns: a) mute / unmute, c) pause
-3.  Different duck images
+4. Table scores

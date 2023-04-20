@@ -559,7 +559,7 @@ body {
   animation: dogAppearing 2s linear forwards;
 }
 
-.dogWalking {
+#dogWalk {
   position: absolute;
   bottom: 50px;
   z-index: 2;
@@ -568,7 +568,7 @@ body {
   height: 100px;
   animation: dogMove 7s linear forwards, dogWalk 4s step-start 2 forwards;
 }
-.dogWalking.jump {
+#dogWalk.jump {
   animation: dogJump 1s step-start 1 forwards;
 }
 

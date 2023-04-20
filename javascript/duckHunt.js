@@ -47,10 +47,7 @@ function showDucks() {
 
 function startGame() {
   document.getElementById('start').style.display = 'none';
-  // LBA added: refactor - I need class "jump" added to the container with a class "dogWalking" when a btn Play is clicked
-  // const jumpingDog = document.getElementsByClassName('dogWalking');
-  // jumpingDog.classList.add('jump');
-  // LBA code ended
+  document.getElementById('dogWalk').classList.add('jump');
   document.getElementById('gameOver').style.display = 'none';
   gamePaused = false;
   createDucks(numberOfDucks);
