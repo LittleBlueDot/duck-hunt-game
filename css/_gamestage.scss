@@ -10,32 +10,6 @@ body {
   height: 82vh;
   display: flex;
   overflow: hidden;
-  button {
-    font-family: $title-font;
-    font-size: $btn-font-size;
-    color: $white;
-    background: $body-color;
-    padding: 10px 20px;
-    border: 3px solid $body-color;
-    border-radius: 50px;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-    animation: pulsate 1.5s ease infinite;
-    cursor: pointer;
-    transition: 0.3s;
-    &:hover,
-    &:focus {
-      color: $body-color;
-      background: transparentize($color: $body-color, $amount: 0.8);
-    }
-  }
-}
-
-.btn-container {
-  position: absolute;
-  max-width: 200px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 0);
 }
 
 .duck {
@@ -92,16 +66,7 @@ body {
       duck6FlyingTrajectory 7s linear forwards;
   }
 }
-// .falling {
-//   animation: duckFall 800ms linear forwards;
-//   background-position: -65px -460px;
-//   // //LBA alternative shot
-//   // width: 100px !important;
-//   // height: 95px !important;
-//   // background-image: url('../img/shot.png') !important;
-//   // background-position: top left !important;
-//   // animation: shotDisappearing 1s linear forwards !important;
-// }
+
 
 .dog-container {
   position: absolute;
@@ -156,70 +121,4 @@ body {
   }
 }
 
-.game-end-text-wrap {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  p {
-    color: $white;
-    text-align: center;
-    font-size: $title-size;
-    margin-bottom: 10px;
-  }
-}
 
-#gameOver {
-  display: none;
-}
-
-.game-information {
-  position: absolute;
-  z-index: 3;
-  bottom: 10px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 0 20px;
-  color: $white;
-  & > div {
-    @include box;
-    display: flex;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 5px 2px;
-    h2 {
-      font-family: $title-font;
-      font-size: $title-size;
-      flex-basis: 100%;
-    }
-  }
-}
-
-#shot {
-  & > div {
-    width: 20px;
-    height: 20px;
-    background: url('../img/sprite.png') no-repeat;
-    background-position: 0px -557px;
-    &.lost {
-      background: transparent;
-    }
-  }
-}
-
-#hit {
-  & > div {
-    width: 20px;
-    height: 20px;
-    background: url('../img/sprite.png') no-repeat;
-    background-position: -52px -557px;
-    &.success {
-      background: url('../img/sprite.png') no-repeat;
-      background-position: -25px -557px;
-    }
-  }
-}
