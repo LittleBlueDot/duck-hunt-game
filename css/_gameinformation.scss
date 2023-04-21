@@ -5,6 +5,7 @@
     color: $white;
     background: $body-color;
     padding: 10px 20px;
+    margin-top: 15px;
     border: 3px solid $body-color;
     border-radius: 50px;
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -16,6 +17,9 @@
       color: $body-color;
       background: transparentize($color: $body-color, $amount: 0.8);
     }
+  }
+  #gameOver button{
+    margin-top: 25px;
   }
 }
 

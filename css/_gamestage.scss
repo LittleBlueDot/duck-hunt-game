@@ -21,7 +21,6 @@ body {
     background-position: 0px -220px;
     animation: duck1Fly 200ms infinite step-end alternate,
       duck1FlyingTrajectory 13s linear infinite;
-    // animation: duck1Fly 200ms infinite step-end alternate, duck1 15s linear infinite;
     &.falling {
       @include fallingDuck;
       animation: duck1FlyingTrajectory 13s linear forwards, shotDisappearing 150ms linear forwards;
@@ -127,8 +126,8 @@ body {
   background: url('../img/sprite.png') no-repeat;
   width: 120px;
   height: 100px;
-  animation: dogMove 7s linear forwards, dogWalk 4s step-start 2 forwards;
+  animation: dogWalk 200ms infinite step-end alternate, dogMove 15s linear infinite;
   &.jump {
-    animation: dogMove 7s linear forwards, dogJump 1s step-start 1 forwards;
+    animation: dogJump 1s step-start 1 forwards, dogMove 15s linear infinite;
   }
 }
