@@ -13,6 +13,10 @@
 <body>
   <section class="game-stage">
 
+    <div class="levels" id="level">
+      <p></p>
+    </div>
+
     <div class="game-info-text-wrap" id="insertName">
       <form>
         <label for="name">What's your name?</label><br />
@@ -23,16 +27,14 @@
     <div class="game-info-text-wrap" id="gameOver">
       <p id="winner"></p>
       <div class="total-score-box">
-        <p><span id="playerName">,</span><br />your total score:</p>
+        <p><span id="playerName">,</span><br />Your total score:</p>
         <p id="totalScore"></p>
         <p id="totalTime"></p>
       </div>
       <div class="btn" id="restart"><button onclick="startGame()">Play again!</button></div>
     </div>
 
-    <div class="game-info-text-wrap" id="level">
-      <p></p>
-    </div>
+
 
     <div class="dog-container">
       <div class="dog">
