@@ -184,7 +184,7 @@ fieldset {
 }
 @keyframes duck1FlyingTrajectory {
   0% {
-    left: -100px;
+    left: 0px;
     top: 0px;
     opacity: 1;
   }
@@ -205,7 +205,7 @@ fieldset {
 }
 @keyframes duck2FlyingTrajectory {
   0% {
-    left: -100px;
+    left: 0px;
     top: 300px;
     opacity: 1;
   }
@@ -226,7 +226,7 @@ fieldset {
 }
 @keyframes duck3FlyingTrajectory {
   0% {
-    left: -100px;
+    left: 0px;
     top: 200px;
     opacity: 1;
   }
@@ -244,7 +244,7 @@ fieldset {
 }
 @keyframes duck4FlyingTrajectory {
   0% {
-    left: -100px;
+    left: 0px;
     top: 100px;
     opacity: 1;
   }
@@ -263,7 +263,7 @@ fieldset {
 }
 @keyframes duck5FlyingTrajectory {
   0% {
-    left: -100px;
+    left: 0px;
     top: 600px;
     opacity: 1;
   }
@@ -281,7 +281,7 @@ fieldset {
 }
 @keyframes duck6FlyingTrajectory {
   0% {
-    left: -100px;
+    left: 0px;
     top: 100px;
     opacity: 1;
   }
@@ -307,14 +307,6 @@ fieldset {
     opacity: 0;
   }
 }
-/* @keyframes shotDisappearing {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -100px 0;
-  }
-} */
 @keyframes shotDisappearing {
   from {
     opacity: 1;
@@ -327,94 +319,10 @@ fieldset {
   0% {
     background-position: 0px 0px;
   }
-  3% {
-    background-position: -120px 0px;
-  }
-  6% {
-    background-position: -240px 0px;
-  }
-  9% {
-    background-position: -360px 0px;
-  }
-  12% {
-    background-position: 0px 0px;
-  }
-  15% {
-    background-position: -120px 0px;
-  }
-  18% {
-    background-position: -240px 0px;
-  }
-  21% {
-    background-position: -360px 0px;
-  }
-  24% {
-    background-position: 0px 0px;
-  }
-  27% {
-    background-position: -120px 0px;
-  }
-  30% {
-    background-position: -240px 0px;
-  }
   33% {
-    background-position: -360px 0px;
-  }
-  36% {
-    background-position: 0px 0px;
-  }
-  39% {
-    background-position: -120px 0px;
-  }
-  42% {
-    background-position: -240px 0px;
-  }
-  45% {
-    background-position: -360px 0px;
-  }
-  48% {
-    background-position: 0px 0px;
-  }
-  51% {
-    background-position: -120px 0px;
-  }
-  54% {
-    background-position: -240px 0px;
-  }
-  57% {
-    background-position: -360px 0px;
-  }
-  60% {
-    background-position: 0px 0px;
-  }
-  63% {
     background-position: -120px 0px;
   }
   66% {
-    background-position: -240px 0px;
-  }
-  69% {
-    background-position: -360px 0px;
-  }
-  72% {
-    background-position: 0px 0px;
-  }
-  75% {
-    background-position: -120px 0px;
-  }
-  78% {
-    background-position: -240px 0px;
-  }
-  81% {
-    background-position: -360px 0px;
-  }
-  90% {
-    background-position: 0px 0px;
-  }
-  93% {
-    background-position: -120px 0px;
-  }
-  96% {
     background-position: -240px 0px;
   }
   100% {
@@ -446,11 +354,11 @@ fieldset {
     left: 0px;
     opacity: 1;
   }
-  95% {
+  98% {
     opacity: 1;
   }
   100% {
-    left: 90%;
+    left: calc(100% - 120px);
     opacity: 0;
   }
 }
@@ -514,7 +422,7 @@ body {
 .duck:nth-child(4n+1) {
   background: url("../img/sprite.png") no-repeat;
   background-position: 0px -220px;
-  animation: duck1Fly 200ms infinite step-end alternate, duck1FlyingTrajectory 13s linear forwards;
+  animation: duck1Fly 200ms infinite step-end alternate, duck1FlyingTrajectory 13s linear infinite;
 }
 .duck:nth-child(4n+1).falling {
   width: 100px;
@@ -525,7 +433,7 @@ body {
 .duck:nth-child(4n+2) {
   background: url("../img/sprite.png") no-repeat;
   background-position: -260px -220px;
-  animation: duck2Fly 200ms infinite step-end alternate, duck2FlyingTrajectory 10s linear forwards;
+  animation: duck2Fly 200ms infinite step-end alternate, duck2FlyingTrajectory 10s linear infinite;
 }
 .duck:nth-child(4n+2).falling {
   width: 100px;
@@ -536,7 +444,7 @@ body {
 .duck:nth-child(4n+3) {
   background: url("../img/sprite.png") no-repeat;
   background-position: -520px -220px;
-  animation: duck3Fly 200ms infinite step-end alternate, duck3FlyingTrajectory 8s linear forwards;
+  animation: duck3Fly 200ms infinite step-end alternate, duck3FlyingTrajectory 8s linear infinite;
 }
 .duck:nth-child(4n+3).falling {
   width: 100px;
@@ -547,7 +455,7 @@ body {
 .duck:nth-child(4n+4) {
   background: url("../img/sprite.png") no-repeat;
   background-position: 0px -220px;
-  animation: duck1Fly 200ms infinite step-end alternate, duck4FlyingTrajectory 10s linear forwards;
+  animation: duck1Fly 200ms infinite step-end alternate, duck4FlyingTrajectory 10s linear infinite;
 }
 .duck:nth-child(4n+4).falling {
   width: 100px;
@@ -558,7 +466,7 @@ body {
 .duck:nth-child(4n+5) {
   background: url("../img/sprite.png") no-repeat;
   background-position: -260px -220px;
-  animation: duck2Fly 200ms infinite step-end alternate, duck5FlyingTrajectory 9s linear forwards;
+  animation: duck2Fly 200ms infinite step-end alternate, duck5FlyingTrajectory 9s linear infinite;
 }
 .duck:nth-child(4n+5).falling {
   width: 100px;
@@ -569,7 +477,7 @@ body {
 .duck:nth-child(4n+6) {
   background: url("../img/sprite.png") no-repeat;
   background-position: -520px -220px;
-  animation: duck3Fly 200ms infinite step-end alternate, duck6FlyingTrajectory 7s linear forwards;
+  animation: duck3Fly 200ms infinite step-end alternate, duck6FlyingTrajectory 7s linear infinite;
 }
 .duck:nth-child(4n+6).falling {
   width: 100px;
@@ -624,10 +532,10 @@ body {
   background: url("../img/sprite.png") no-repeat;
   width: 120px;
   height: 100px;
-  animation: dogMove 7s linear forwards, dogWalk 4s step-start 2 forwards;
+  animation: dogWalk 200ms infinite step-end alternate, dogMove 15s linear infinite;
 }
 #dogWalk.jump {
-  animation: dogMove 7s linear forwards, dogJump 1s step-start 1 forwards;
+  animation: dogJump 1s step-start 1 forwards, dogMove 15s linear infinite;
 }
 
 .game-stage button {
@@ -636,6 +544,7 @@ body {
   color: #fff;
   background: #333;
   padding: 10px 20px;
+  margin-top: 15px;
   border: 3px solid #333;
   border-radius: 50px;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -644,8 +553,12 @@ body {
   transition: 0.3s;
 }
 .game-stage button:hover, .game-stage button:focus {
-  color: #333;
-  background: rgba(51, 51, 51, 0.2);
+  color: #fff;
+  background: #474747;
+  border: 3px solid #474747;
+}
+.game-stage #gameOver button {
+  margin-top: 25px;
 }
 
 .btn-container {
@@ -692,10 +605,6 @@ body {
 }
 .game-info-text-wrap input:active {
   border-bottom: 3px solid #fff;
-}
-.game-info-text-wrap input::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: none;
 }
 .game-info-text-wrap input::placeholder {
   color: rgba(255, 255, 255, 0.6);
