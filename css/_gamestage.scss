@@ -31,7 +31,7 @@ body {
     background: url('../img/sprite.png') no-repeat;
     background-position: -260px -220px;
     animation: duck2Fly 200ms infinite step-end alternate,
-      duck2FlyingTrajectory 10s linear forwards;
+      duck2FlyingTrajectory 10s linear infinite;
     &.falling {
       @include fallingDuck;
       animation: duck2FlyingTrajectory 10s linear forwards, shotDisappearing 150ms linear forwards;
@@ -41,7 +41,7 @@ body {
     background: url('../img/sprite.png') no-repeat;
     background-position: -520px -220px;
     animation: duck3Fly 200ms infinite step-end alternate,
-      duck3FlyingTrajectory 8s linear forwards;
+      duck3FlyingTrajectory 8s linear infinite;
       &.falling {
         @include fallingDuck;
         animation: duck3FlyingTrajectory 8s linear forwards, shotDisappearing 150ms linear forwards;
@@ -51,7 +51,7 @@ body {
     background: url('../img/sprite.png') no-repeat;
     background-position: 0px -220px;
     animation: duck1Fly 200ms infinite step-end alternate,
-      duck4FlyingTrajectory 10s linear forwards;
+      duck4FlyingTrajectory 10s linear infinite;
     &.falling {
       @include fallingDuck;
       animation: duck4FlyingTrajectory 10s linear forwards, shotDisappearing 150ms linear forwards;
@@ -61,7 +61,7 @@ body {
     background: url('../img/sprite.png') no-repeat;
     background-position: -260px -220px;
     animation: duck2Fly 200ms infinite step-end alternate,
-      duck5FlyingTrajectory 9s linear forwards;
+      duck5FlyingTrajectory 9s linear infinite;
     &.falling {
       @include fallingDuck;
       animation: duck5FlyingTrajectory 9s linear forwards, shotDisappearing 150ms linear forwards;
@@ -71,7 +71,7 @@ body {
     background: url('../img/sprite.png') no-repeat;
     background-position: -520px -220px;
     animation: duck3Fly 200ms infinite step-end alternate,
-      duck6FlyingTrajectory 7s linear forwards;
+      duck6FlyingTrajectory 7s linear infinite;
     &.falling {
       @include fallingDuck;
       animation: duck6FlyingTrajectory 7s linear forwards, shotDisappearing 150ms linear forwards;
