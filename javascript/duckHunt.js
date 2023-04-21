@@ -4,35 +4,52 @@ const ducksAlive = () => {
 const bullets = () => {
   return document.querySelectorAll('#shot .bullet:not(.lost)');
 };
-const dogLaugh = document.getElementById('dogLaugh');
+
 const maxLevels = 5;
 let currentLevel = 1;
 let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
 let playerScore = 0;
+let playerName;
+let levelElement = document.getElementById("level");
+let startTime, endTime;
+let isAnimationRunning = false;
 
-dogLaugh.addEventListener('animationend', () => {
-  dogLaugh.style.display = 'none';
+
+const dogWithDuck = document.getElementById('dogWithDuck');
+const dogLaughing = document.getElementById('dogLaugh');
+const inputElement = document.getElementById("name");
+
+inputElement.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    playerName = inputElement.value;
+    if (!playerName.trim()) {
+      alert("Please enter your name to start the game.");
+      return;
+    }
+    startGame();
+  }
 });
 
-
 function startGame() {
-  //const { left } = dogWalk.getBoundingClientRect();
-  document.getElementById("insertName").style.display = 'none';
+  startTime = new Date();
+  document.getElementById('insertName').style.display = 'none';
   document.getElementById('gameOver').style.display = 'none';
   document.getElementById('insertName').style.display = 'none';
-  document.getElementById('start').style.display = 'none';
   document.getElementById('dogWalk').classList.add('jump');
+  document.getElementById('level').style.display = 'block';
   newGame();
 }
 
 function newGame() {
+  levelElement.textContent = "Level " + currentLevel;
   gamePaused = false;
-  let numberOfducksAlive = currentLevel + 1;
-  createducksAlive(numberOfducksAlive);
-  createShotDivs(numberOfducksAlive * 2);
-  createHitDivs(numberOfducksAlive);
+  let numberOfducks = currentLevel + 1;
+  createducksAlive(numberOfducks);
+  createShotDivs(numberOfducks + 2);
+  createHitDivs(numberOfducks);
   showducksAlive();
 }
 
@@ -42,7 +59,6 @@ function createducksAlive(n) {
   for (let i = 1; i <= n; i++) {
     const duck = document.createElement('div');
     duck.className = 'duck';
-    //duck.id = `duck${i}`;
     duckContainer.appendChild(duck);
   }
   document.body.appendChild(duckContainer);
@@ -78,21 +94,35 @@ window.onclick = function (e) {
     decreaseBullet();
     if (e.target.classList == 'duck') {
       const fallingDuck = e.target;
-      //const x = e.clientX;
-      //const y = e.clientY;
       fallingDuck.classList.add('falling');
-      document.getElementById('dogWithDuck').style.display = 'block';
+      if (!isAnimationRunning) {
+        isAnimationRunning = true;
+        dogWithDuck.style.display = 'block';
+      }
       increaseScore();
       hit();
       fallingDuck.addEventListener('animationend', function () {
         fallingDuck.remove();
       });
     } else {
-      document.getElementById('dogLaugh').style.display = 'block';
+      if (!isAnimationRunning) {
+        isAnimationRunning = true;
+        dogLaughing.style.display = 'block';
+      }
     }
     checkGameOver();
   }
 };
+
+dogWithDuck.addEventListener('animationend', function () {
+  dogWithDuck.style.display = 'none';
+  isAnimationRunning = false;
+});
+
+dogLaughing.addEventListener('animationend', function () {
+  dogLaughing.style.display = 'none';
+  isAnimationRunning = false;
+});
 
 function decreaseBullet() {
   const bulletDivs = document.querySelectorAll('#shot .bullet');
@@ -126,16 +156,22 @@ function hit() {
 }
 
 function checkGameOver() {
+  endTime = new Date();
+  let timeDiff = Math.round((endTime - startTime) / 1000);
   if (bullets().length == 0 && ducksAlive().length > 0) {
     document.getElementById('winner').innerHTML = "Yikes! You lost :(";
     document.getElementById('gameOver').style.display = 'block';
+    document.getElementById('playerName').innerHTML = playerName;
     document.getElementById('totalScore').innerHTML = playerScore;
+    document.getElementById('totalTime').innerHTML = timeDiff + "s";
     restart();
   } else if (bullets().length >= 0 && ducksAlive().length == 0) {
     if (currentLevel == 5) {
       document.getElementById('winner').innerHTML = "You've completed the game! CONGRATULATIONS!";
       document.getElementById('gameOver').style.display = 'block';
+      document.getElementById('playerName').innerHTML = playerName;
       document.getElementById('totalScore').innerHTML = playerScore;
+      document.getElementById('totalTime').innerHTML = timeDiff + "s";
       restart();
     } else {
       document.getElementById('winner').innerHTML = "You've won! NEXT LEVEL!";
@@ -148,6 +184,9 @@ function checkGameOver() {
 function restart() {
   gamePaused = true;
   currentLevel = 1;
+  dogWithDuck.style.display = 'none';
+  dogLaughing.style.display = 'none';
+  document.getElementById('level').style.display = 'none';
   document.querySelectorAll('.duck').forEach(duck => {
     duck.classList.remove('flying');
     duck.classList.remove('falling');
@@ -163,8 +202,6 @@ function restart() {
   });
   document.querySelector('#score').innerHTML = 0;
   playerScore = 0;
-
-  // TODO Refactor this in scss
   const dogWalk = document.getElementById('dogWalk');
   dogWalk.classList.remove('jump');
   const parent = dogWalk.parentNode;
@@ -188,35 +225,3 @@ function newLevel() {
   });
   newGame();
 }
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'p') {
-    gamePaused = !gamePaused;
-    if (gamePaused) {
-      // TODO
-    } else {
-      // TODO if the game is no longer paused, resume it (e.g. start animations, re-enable controls)
-    }
-  } else if (event.key === 'm') {
-    gameMuted = !gameMuted;
-    if (gameMuted) {
-      // TODO code to mute the game
-    } else {
-      // TODO code to unmute the game
-    }
-  } else if (event.key === 'f') {
-    gameFullscreen = !gameFullscreen;
-    if (gameFullscreen) {
-      const element = document.documentElement;
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-      }
-    } else {
-      document.exitFullscreen();
-    }
-  }
-});

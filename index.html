@@ -12,32 +12,29 @@
 
 <body>
   <section class="game-stage">
+
     <div class="game-info-text-wrap" id="insertName">
       <form>
         <label for="name">What's your name?</label><br />
         <input name="name" id="name" placeholder="Insert your name" autocomplete="off">
       </form>
     </div>
-    <div class="btn-container" id="start"><button onclick="startGame()">Play</button></div>
+    <!--<div class="btn-container" id="start"><button onclick="startGame()">Play</button></div>-->
+
     <div class="game-info-text-wrap" id="gameOver">
       <p id="winner"></p>
       <div class="total-score-box">
-        <p><span id="name">,</span><br />your total score:</p>
+        <p><span id="playerName">,</span><br />your total score:</p>
         <p id="totalScore"></p>
+        <p id="totalTime"></p>
       </div>
       <div class="btn" id="restart"><button onclick="startGame()">Play again!</button></div>
     </div>
 
-    <!---------------------------------->
-    <!--Levels container starts-->
-    <!---------------------------------->
+    <div class="game-info-text-wrap" id="level">
+      <p></p>
+    </div>
 
-    <!--<div class="game-info-text-wrap" id="level">
-        <p>Level 1</p>
-      </div>-->
-    <!---------------------------------->
-    <!--Levels container ends-->
-    <!---------------------------------->
     <div class="dog-container">
       <div class="dog">
         <div id="dogLaugh"></div>
