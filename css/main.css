@@ -182,6 +182,24 @@ fieldset {
     background-position: -682px -220px;
   }
 }
+@keyframes duck1 {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+  33% {
+    left: calc(100% - 70px);
+    top: 400px;
+  }
+  66% {
+    left: 50%;
+    top: 200px;
+  }
+  100% {
+    left: 0;
+    top: 200px;
+  }
+}
 @keyframes duck1FlyingTrajectory {
   0% {
     left: 0px;
@@ -637,6 +655,10 @@ body {
 }
 
 #gameOver {
+  display: none;
+}
+
+#level {
   display: none;
 }
 

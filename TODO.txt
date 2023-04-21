@@ -3,16 +3,8 @@ CSS:
 2. Check if keyframes need autoprefixers;
 3. Infinite loop for dog walking and birds;
 
-JS:
-1. Connect player name and after insert "enter" the game starts;
-2. Dog with duck when hit above 1st level not showing;
-3. Dog still laughing or with duck at end of game;
-4. Time;
-5. Not overlaping dog with duck and dog laughing
-
 BUGS:
 1. Disappearing birds;
-2. Birds falling where they are hit;
 
 -----------------------
 
