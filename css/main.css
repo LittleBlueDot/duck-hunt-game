@@ -553,8 +553,9 @@ body {
   transition: 0.3s;
 }
 .game-stage button:hover, .game-stage button:focus {
-  color: #333;
-  background: rgba(51, 51, 51, 0.2);
+  color: #fff;
+  background: #474747;
+  border: 3px solid #474747;
 }
 .game-stage #gameOver button {
   margin-top: 25px;
