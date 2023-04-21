@@ -1,25 +1,21 @@
-const ducksAlive = () => {
+const maxLevels = 5;
+let currentLevel = 1;
+let gamePaused = true;
+const scoreElement = document.querySelector('#score');
+let playerScore = 0;
+const inputElement = document.getElementById("name");
+let playerName;
+let startTime, endTime;
+let isAnimationRunning = false;
+const dogWalk = document.getElementById('dogWalk');
+const dogWithDuck = document.getElementById('dogWithDuck');
+const dogLaughing = document.getElementById('dogLaugh');
+const activeDucks = () => {
   return document.querySelectorAll('.duck:not(.falling)');
 };
 const bullets = () => {
   return document.querySelectorAll('#shot .bullet:not(.lost)');
 };
-
-const maxLevels = 5;
-let currentLevel = 1;
-let gamePaused = true;
-let gameMuted = false;
-let gameFullscreen = false;
-let playerScore = 0;
-let playerName;
-let levelElement = document.getElementById("level");
-let startTime, endTime;
-let isAnimationRunning = false;
-
-
-const dogWithDuck = document.getElementById('dogWithDuck');
-const dogLaughing = document.getElementById('dogLaugh');
-const inputElement = document.getElementById("name");
 
 inputElement.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
@@ -37,42 +33,30 @@ function startGame() {
   startTime = new Date();
   document.getElementById('insertName').style.display = 'none';
   document.getElementById('gameOver').style.display = 'none';
-  document.getElementById('insertName').style.display = 'none';
-  document.getElementById('dogWalk').classList.add('jump');
   document.getElementById('level').style.display = 'block';
+  document.getElementById('dogWalk').classList.add('jump');
   newGame();
 }
 
 function newGame() {
-  levelElement.textContent = "Level " + currentLevel;
+  document.getElementById("level").textContent = "Level " + currentLevel;
   gamePaused = false;
   let numberOfducks = currentLevel + 1;
-  createducksAlive(numberOfducks);
-  createShotDivs(numberOfducks + 2);
+  createDucks(numberOfducks);
   createHitDivs(numberOfducks);
-  showducksAlive();
+  createShotDivs(numberOfducks + 2);
 }
 
-function createducksAlive(n) {
+function createDucks(n) {
   const duckContainer = document.createElement('div');
   duckContainer.className = 'duck-container';
   for (let i = 1; i <= n; i++) {
     const duck = document.createElement('div');
     duck.className = 'duck';
     duckContainer.appendChild(duck);
+    duck.style.display = 'block';
   }
   document.body.appendChild(duckContainer);
-}
-
-function createShotDivs(n) {
-  const shotDiv = document.getElementById('shot');
-  const bulletDivs = shotDiv.querySelectorAll('.bullet');
-  for (let i = 1; i <= n; i++) {
-    const bullet = document.createElement('div');
-    bullet.className = 'bullet';
-    bullet.id = `bullet${bulletDivs.length + i}`;
-    shotDiv.insertBefore(bullet, shotDiv.firstChild);
-  }
 }
 
 function createHitDivs(n) {
@@ -83,46 +67,46 @@ function createHitDivs(n) {
   }
 }
 
-function showducksAlive() {
-  ducksAlive().forEach(function (duck) {
-    duck.style.display = 'block';
-  });
+function createShotDivs(n) {
+  const shotDiv = document.getElementById('shot');
+  for (let i = 1; i <= n; i++) {
+    const bullet = document.createElement('div');
+    bullet.className = 'bullet';
+    shotDiv.insertBefore(bullet, shotDiv.firstChild);
+  }
 }
 
-window.onclick = function (e) {
-  if (!gamePaused && e.target.tagName !== 'BUTTON') {
+window.onclick = function (event) {
+  if (!gamePaused && event.target.tagName !== 'BUTTON') {
     decreaseBullet();
-    if (e.target.classList == 'duck') {
-      const fallingDuck = e.target;
-      fallingDuck.classList.add('falling');
-      if (!isAnimationRunning) {
-        isAnimationRunning = true;
-        dogWithDuck.style.display = 'block';
-      }
-      increaseScore();
-      hit();
-      fallingDuck.addEventListener('animationend', function () {
-        fallingDuck.remove();
-      });
+    if (event.target.classList == 'duck') {
+      handleDuckHit(event.target);
     } else {
-      if (!isAnimationRunning) {
-        isAnimationRunning = true;
-        dogLaughing.style.display = 'block';
-      }
+      handleMiss();
     }
     checkGameOver();
   }
 };
 
-dogWithDuck.addEventListener('animationend', function () {
-  dogWithDuck.style.display = 'none';
-  isAnimationRunning = false;
-});
+function handleDuckHit(duck) {
+  increaseScore();
+  markHit();
+  duck.classList.add('falling');
+  if (!isAnimationRunning) {
+    isAnimationRunning = true;
+    dogWithDuck.style.display = 'block';
+  }
+  duck.addEventListener('animationend', function () {
+    duck.remove();
+  });
+}
 
-dogLaughing.addEventListener('animationend', function () {
-  dogLaughing.style.display = 'none';
-  isAnimationRunning = false;
-});
+function handleMiss() {
+  if (!isAnimationRunning) {
+    isAnimationRunning = true;
+    dogLaughing.style.display = 'block';
+  }
+}
 
 function decreaseBullet() {
   const bulletDivs = document.querySelectorAll('#shot .bullet');
@@ -136,16 +120,14 @@ function decreaseBullet() {
 }
 
 function increaseScore() {
-  const score = document.querySelector('#score').innerHTML;
-  const scoreHTML = document.querySelector('#score');
-  let count = Number(score);
-  scoreHTML.innerHTML = count + 200;
-  playerScore = count + 200;
+  let score = parseInt(scoreElement.textContent);
+  score += 200;
+  scoreElement.textContent = score;
+  playerScore = score;
 }
 
-function hit() {
-  const hit = document.querySelector('#hit');
-  const divs = hit.querySelectorAll('div');
+function markHit() {
+  const divs = document.querySelectorAll('#hit div')
   for (let i = 0; i < divs.length; i++) {
     const div = divs[i];
     if (!div.classList.contains('success')) {
@@ -155,73 +137,80 @@ function hit() {
   }
 }
 
+dogWithDuck.addEventListener('animationend', handleAnimationEnd);
+
+dogLaughing.addEventListener('animationend', handleAnimationEnd);
+
+function handleAnimationEnd(event) {
+  const element = event.target;
+  element.style.display = 'none';
+  isAnimationRunning = false;
+}
+
 function checkGameOver() {
   endTime = new Date();
-  let timeDiff = Math.round((endTime - startTime) / 1000);
-  if (bullets().length == 0 && ducksAlive().length > 0) {
-    document.getElementById('winner').innerHTML = "Yikes! You lost :(";
-    document.getElementById('gameOver').style.display = 'block';
-    document.getElementById('playerName').innerHTML = playerName;
-    document.getElementById('totalScore').innerHTML = playerScore;
-    document.getElementById('totalTime').innerHTML = timeDiff + "s";
-    restart();
-  } else if (bullets().length >= 0 && ducksAlive().length == 0) {
-    if (currentLevel == 5) {
-      document.getElementById('winner').innerHTML = "You've completed the game! CONGRATULATIONS!";
-      document.getElementById('gameOver').style.display = 'block';
-      document.getElementById('playerName').innerHTML = playerName;
-      document.getElementById('totalScore').innerHTML = playerScore;
-      document.getElementById('totalTime').innerHTML = timeDiff + "s";
-      restart();
+  if (bullets().length === 0 && activeDucks().length > 0) {
+    gameOver("Yikes! You lost :(");
+  } else if (bullets().length >= 0 && activeDucks().length === 0) {
+    if (currentLevel == maxLevels) {
+      gameOver("You've completed the game! CONGRATULATIONS!");
     } else {
-      document.getElementById('winner').innerHTML = "You've won! NEXT LEVEL!";
       currentLevel++;
       newLevel();
     }
   }
 }
 
+function gameOver(message) {
+  let timeDiff = Math.round((endTime - startTime) / 1000);
+  document.getElementById('level').style.display = 'none';
+  document.getElementById('gameOver').style.display = 'block';
+  dogWithDuck.style.display = 'none';
+  dogLaughing.style.display = 'none';
+  isAnimationRunning = false;
+  document.getElementById('winner').innerHTML = message;
+  document.getElementById('playerName').innerHTML = playerName;
+  document.getElementById('totalScore').innerHTML = playerScore;
+  document.getElementById('totalTime').innerHTML = timeDiff + "s";
+  restart();
+}
+
 function restart() {
   gamePaused = true;
   currentLevel = 1;
-  dogWithDuck.style.display = 'none';
-  dogLaughing.style.display = 'none';
-  document.getElementById('level').style.display = 'none';
-  document.querySelectorAll('.duck').forEach(duck => {
-    duck.classList.remove('flying');
-    duck.classList.remove('falling');
-  });
-  document.querySelectorAll('.duck').forEach(duck => {
-    duck.parentNode.removeChild(duck);
-  });
-  document.querySelectorAll('#shot div').forEach(shot => {
-    shot.parentNode.removeChild(shot);
-  });
-  document.querySelectorAll('#hit div').forEach(hit => {
-    hit.parentNode.removeChild(hit);
-  });
-  document.querySelector('#score').innerHTML = 0;
   playerScore = 0;
-  const dogWalk = document.getElementById('dogWalk');
+  removeDucks();
+  removeShots();
+  removeHits();
+  scoreElement.innerHTML = 0;
   dogWalk.classList.remove('jump');
-  const parent = dogWalk.parentNode;
-  parent.removeChild(dogWalk);
-  parent.appendChild(dogWalk);
+  dogWalk.remove();
+  document.body.appendChild(dogWalk);
 }
 
 function newLevel() {
+  removeDucks();
+  removeShots();
+  removeHits();
+  newGame();
+}
+
+function removeDucks() {
   document.querySelectorAll('.duck').forEach(duck => {
     duck.classList.remove('flying');
     duck.classList.remove('falling');
-  });
-  document.querySelectorAll('.duck').forEach(duck => {
     duck.parentNode.removeChild(duck);
   });
+}
+
+function removeShots() {
   document.querySelectorAll('#shot div').forEach(shot => {
     shot.parentNode.removeChild(shot);
   });
+}
+
+function removeHits() {
   document.querySelectorAll('#hit div').forEach(hit => {
     hit.parentNode.removeChild(hit);
   });
-  newGame();
 }
