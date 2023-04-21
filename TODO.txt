@@ -1,38 +1,21 @@
-
 CSS:
-1. Look into walking dog animation - coordinate better animations that the walking would be so quick
-2. Check if keyframes need autoprefixers.
-
-
-HTML / CSS
-
-1. Text / container informing about levels.
-2. Sound Effects
-3. Buttons (f) fullscreen, (m) mute (not working) and (p) pause (not working)
-
+1. Look into walking dog animation - coordinate better animations that the walking would be so quick;
+2. Check if keyframes need autoprefixers;
+3. Infinite loop for dog walking and birds;
 
 JS:
-
-1. Dog still laughing or with duck at end of game
-2. Dog with duck when hit above 1st level not showing
-4. Save records in table score;
+1. Connect player name and after insert "enter" the game starts;
+2. Dog with duck when hit above 1st level not showing;
+3. Dog still laughing or with duck at end of game;
+4. Time;
 5. Not overlaping dog with duck and dog laughing
 
-I think it´s JS not CSS problem:
-
-- Birds falling where they are hit;
-- Dog jumping when player clicks play
-
-Abort:
-
-- Dog walking back when hits the other side of screen;
-
+BUGS:
+1. Disappearing birds;
+2. Birds falling where they are hit;
 
 -----------------------
-
 
 Implement if we have time:
 
 1.	Sound effects
-2.	Btns: a) mute / unmute, c) pause
-

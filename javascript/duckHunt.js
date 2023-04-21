@@ -10,13 +10,18 @@ let currentLevel = 1;
 let gamePaused = true;
 let gameMuted = false;
 let gameFullscreen = false;
+let playerScore = 0;
+
 dogLaugh.addEventListener('animationend', () => {
   dogLaugh.style.display = 'none';
 });
 
+
 function startGame() {
   //const { left } = dogWalk.getBoundingClientRect();
+  document.getElementById("insertName").style.display = 'none';
   document.getElementById('gameOver').style.display = 'none';
+  document.getElementById('insertName').style.display = 'none';
   document.getElementById('start').style.display = 'none';
   document.getElementById('dogWalk').classList.add('jump');
   newGame();
@@ -37,7 +42,7 @@ function createducksAlive(n) {
   for (let i = 1; i <= n; i++) {
     const duck = document.createElement('div');
     duck.className = 'duck';
-    duck.id = `duck${i}`;
+    //duck.id = `duck${i}`;
     duckContainer.appendChild(duck);
   }
   document.body.appendChild(duckContainer);
@@ -85,8 +90,8 @@ window.onclick = function (e) {
     } else {
       document.getElementById('dogLaugh').style.display = 'block';
     }
+    checkGameOver();
   }
-  checkGameOver();
 };
 
 function decreaseBullet() {
@@ -105,6 +110,7 @@ function increaseScore() {
   const scoreHTML = document.querySelector('#score');
   let count = Number(score);
   scoreHTML.innerHTML = count + 200;
+  playerScore = count + 200;
 }
 
 function hit() {
@@ -123,11 +129,13 @@ function checkGameOver() {
   if (bullets().length == 0 && ducksAlive().length > 0) {
     document.getElementById('winner').innerHTML = "Yikes! You lost :(";
     document.getElementById('gameOver').style.display = 'block';
+    document.getElementById('totalScore').innerHTML = playerScore;
     restart();
   } else if (bullets().length >= 0 && ducksAlive().length == 0) {
     if (currentLevel == 5) {
       document.getElementById('winner').innerHTML = "You've completed the game! CONGRATULATIONS!";
       document.getElementById('gameOver').style.display = 'block';
+      document.getElementById('totalScore').innerHTML = playerScore;
       restart();
     } else {
       document.getElementById('winner').innerHTML = "You've won! NEXT LEVEL!";
@@ -154,6 +162,7 @@ function restart() {
     hit.parentNode.removeChild(hit);
   });
   document.querySelector('#score').innerHTML = 0;
+  playerScore = 0;
 
   // TODO Refactor this in scss
   const dogWalk = document.getElementById('dogWalk');
