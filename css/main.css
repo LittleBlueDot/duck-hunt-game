@@ -693,6 +693,10 @@ body {
 .game-info-text-wrap input:active {
   border-bottom: 3px solid #fff;
 }
+.game-info-text-wrap input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: none;
+}
 .game-info-text-wrap input::placeholder {
   color: rgba(255, 255, 255, 0.6);
   text-transform: none;
@@ -717,6 +721,10 @@ body {
 }
 .total-score-box p span {
   text-transform: uppercase;
+}
+
+#start {
+  top: 60%;
 }
 
 #gameOver {
