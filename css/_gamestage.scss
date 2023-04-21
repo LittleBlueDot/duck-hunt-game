@@ -23,8 +23,9 @@ body {
       duck1FlyingTrajectory 13s linear forwards;
     // animation: duck1Fly 200ms infinite step-end alternate, duck1 15s linear infinite;
     &.falling {
-      animation: duckFall 800ms linear forwards;
-      background-position: -65px -460px;
+      @include fallingDuck;
+      animation: duck1FlyingTrajectory 13s linear forwards, shotDisappearing 150ms linear forwards;
+      
     }
   }
   &:nth-child(4n + 2) {
@@ -32,10 +33,10 @@ body {
     background-position: -260px -220px;
     animation: duck2Fly 200ms infinite step-end alternate,
       duck2FlyingTrajectory 10s linear forwards;
-      &.falling {
-        animation: duckFall 800ms linear forwards;
-        background-position: -325px -460px;
-      }
+    &.falling {
+      @include fallingDuck;
+      animation: duck2FlyingTrajectory 10s linear forwards, shotDisappearing 150ms linear forwards;
+    }
   }
   &:nth-child(4n + 3) {
     background: url('../img/sprite.png') no-repeat;
@@ -43,8 +44,8 @@ body {
     animation: duck3Fly 200ms infinite step-end alternate,
       duck3FlyingTrajectory 8s linear forwards;
       &.falling {
-        animation: duckFall 800ms linear forwards;
-        background-position: -585px -460px;
+        @include fallingDuck;
+        animation: duck3FlyingTrajectory 8s linear forwards, shotDisappearing 150ms linear forwards;
       }
   }
   &:nth-child(4n + 4) {
@@ -52,21 +53,32 @@ body {
     background-position: 0px -220px;
     animation: duck1Fly 200ms infinite step-end alternate,
       duck4FlyingTrajectory 10s linear forwards;
+    &.falling {
+      @include fallingDuck;
+      animation: duck4FlyingTrajectory 10s linear forwards, shotDisappearing 150ms linear forwards;
+    }
   }
   &:nth-child(4n + 5) {
     background: url('../img/sprite.png') no-repeat;
     background-position: -260px -220px;
     animation: duck2Fly 200ms infinite step-end alternate,
       duck5FlyingTrajectory 9s linear forwards;
+    &.falling {
+      @include fallingDuck;
+      animation: duck5FlyingTrajectory 9s linear forwards, shotDisappearing 150ms linear forwards;
+    }
   }
   &:nth-child(4n + 6) {
     background: url('../img/sprite.png') no-repeat;
     background-position: -520px -220px;
     animation: duck3Fly 200ms infinite step-end alternate,
       duck6FlyingTrajectory 7s linear forwards;
+    &.falling {
+      @include fallingDuck;
+      animation: duck6FlyingTrajectory 7s linear forwards, shotDisappearing 150ms linear forwards;
+    }
   }
 }
-
 
 .dog-container {
   position: absolute;
@@ -110,15 +122,13 @@ body {
 
 #dogWalk {
   position: absolute;
-  bottom: 50px;
+  bottom: 100px;
   z-index: 2;
   background: url('../img/sprite.png') no-repeat;
   width: 120px;
   height: 100px;
   animation: dogMove 7s linear forwards, dogWalk 4s step-start 2 forwards;
   &.jump {
-    animation: dogJump 1s step-start 1 forwards;
+    animation: dogMove 7s linear forwards, dogJump 1s step-start 1 forwards;
   }
 }
-
-

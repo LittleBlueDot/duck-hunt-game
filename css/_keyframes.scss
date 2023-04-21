@@ -206,9 +206,18 @@
   }
 }
 
+/* @keyframes shotDisappearing {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -100px 0;
+  }
+} */
+
 @keyframes shotDisappearing {
   from {
-    opacity: 1;
+   opacity: 1;
   }
   to {
     opacity: 0;
@@ -323,7 +332,7 @@
     background-position: -480px 0px;
   }
   25% {
-    background-position: -0px -110px;
+    background-position: 0px -110px;
   }
   50% {
     background-position: -120px -110px;
