@@ -5,3 +5,9 @@
     border: $border;
     box-shadow: $box-shadow;
 }
+
+@mixin fallingDuck {
+    width: 100px;
+    height: 95px;
+    background: url('../img/shot.png') no-repeat center center;
+}
