@@ -10,6 +10,21 @@ let isAnimationRunning = false;
 const dogWalk = document.getElementById('dogWalk');
 const dogWithDuck = document.getElementById('dogWithDuck');
 const dogLaughing = document.getElementById('dogLaugh');
+
+
+//LBA
+// window.addEventListener('DOMContentLoaded', (event) => {
+//   const introSound = document.getElementById('introSound');
+//   introSound.play();
+// });
+// LBA
+
+// function playIntro(){
+//   let audio = new Audio("../audio/duck-hunt-intro.mp3");
+//   audio.play();
+// }
+
+// LBA END
 const activeDucks = () => {
   return document.querySelectorAll('.duck:not(.falling)');
 };

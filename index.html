@@ -1,67 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duck Hunt Game</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" media="all" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Duck Hunt Game</title>
-  <link rel="stylesheet" type="text/css" href="/css/main.css" media="all" />
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-</head>
-
-<body>
-  <section class="game-stage">
-
-    <div class="levels" id="level">
-      <p></p>
-    </div>
-
-    <div class="game-info-text-wrap" id="insertName">
-      <form>
-        <label for="name">What's your name?</label><br />
-        <input name="name" id="name" placeholder="Insert your name" autocomplete="off">
-      </form>
-    </div>
-
-    <div class="game-info-text-wrap" id="gameOver">
-      <p id="winner"></p>
-      <div class="total-score-box">
-        <p><span id="playerName">,</span><br />Your total score:</p>
-        <p id="totalScore"></p>
-        <p id="totalTime"></p>
+  <body>
+    <section class="game-stage">
+      <div class="levels" id="level">
+        <p></p>
       </div>
-      <div class="btn" id="restart"><button onclick="startGame()">Play again!</button></div>
-    </div>
 
-
-
-    <div class="dog-container">
-      <div class="dog">
-        <div id="dogLaugh"></div>
-        <div id="dogWithDuck"></div>
+      <div class="game-info-text-wrap" id="insertName">
+        <form>
+          <label for="name">What's your name?</label><br />
+          <input
+            name="name"
+            id="name"
+            placeholder="Insert your name"
+            autocomplete="off"
+          />
+        </form>
       </div>
-    </div>
-  </section>
 
-  <section class="dog-intro">
-    <div id="dogWalk"></div>
-  </section>
+      <div class="game-info-text-wrap" id="gameOver">
+        <p id="winner"></p>
+        <div class="total-score-box">
+          <p><span id="playerName">,</span><br />Your total score:</p>
+          <p id="totalScore"></p>
+          <p id="totalTime"></p>
+        </div>
+        <div class="btn" id="restart">
+          <button onclick="startGame()">Play again!</button>
+        </div>
+      </div>
 
-  <section class="game-information">
-    <div id="shot">
-      <h2>Shot</h2>
-    </div>
-    <div id="hit">
-      <h2>Hit</h2>
-    </div>
-    <div>
-      <p id="score">0</p>
-      <h2>Score</h2>
-    </div>
-  </section>
+      <div class="dog-container">
+        <div class="dog">
+          <div id="dogLaugh"></div>
+          <div id="dogWithDuck"></div>
+        </div>
+      </div>
+    </section>
 
-  <script type="text/javascript" src="/javascript/duckHunt.js"></script>
-</body>
+    <section class="dog-intro">
+      <div id="dogWalk"></div>
+    </section>
 
+    <section class="game-information">
+      <div id="shot">
+        <h2>Shot</h2>
+      </div>
+      <div id="hit">
+        <h2>Hit</h2>
+      </div>
+      <div>
+        <p id="score">0</p>
+        <h2>Score</h2>
+      </div>
+    </section>
+
+    <audio src="audio/duck-hunt-intro.mp3" id="introSound"></audio><!--To be played onload of the page as maybe walking dog would appear also once - on load of the page-->
+    <audio src="audio/gun-shot.mp3" id="gunShot"></audio>
+    <audio src="audio/dog-laughing.mp3" id="dogLaughingSound"></audio>
+    <audio src="audio/duck-caught.mp3" id="duckCaughtSound"></audio>
+    <!--To be used when the dog with a duck appears-->
+    <audio src="audio/game-over.mp3" id="gameOverSound"></audio>
+    <script type="text/javascript" src="/javascript/duckHunt.js"></script>
+  </body>
 </html>
