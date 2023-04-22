@@ -3,7 +3,7 @@ let currentLevel = 1;
 let gamePaused = true;
 const scoreElement = document.querySelector('#score');
 let playerScore = 0;
-const inputElement = document.getElementById("name");
+const inputElement = document.getElementById('name');
 let playerName;
 let startTime, endTime;
 let isAnimationRunning = false;
@@ -17,12 +17,12 @@ const bullets = () => {
   return document.querySelectorAll('#shot .bullet:not(.lost)');
 };
 
-inputElement.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
+inputElement.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
     event.preventDefault();
     playerName = inputElement.value;
     if (!playerName.trim()) {
-      alert("Please enter your name to start the game.");
+      alert('Please enter your name to start the game.');
       return;
     }
     startGame();
@@ -39,7 +39,7 @@ function startGame() {
 }
 
 function newGame() {
-  document.getElementById("level").textContent = "Level " + currentLevel;
+  document.getElementById('level').textContent = 'Level ' + currentLevel;
   gamePaused = false;
   let numberOfducks = currentLevel + 1;
   createDucks(numberOfducks);
@@ -127,7 +127,7 @@ function increaseScore() {
 }
 
 function markHit() {
-  const divs = document.querySelectorAll('#hit div')
+  const divs = document.querySelectorAll('#hit div');
   for (let i = 0; i < divs.length; i++) {
     const div = divs[i];
     if (!div.classList.contains('success')) {
@@ -150,7 +150,7 @@ function handleAnimationEnd(event) {
 function checkGameOver() {
   endTime = new Date();
   if (bullets().length === 0 && activeDucks().length > 0) {
-    gameOver("Yikes! You lost :(");
+    gameOver('Yikes! You lost :(');
   } else if (bullets().length >= 0 && activeDucks().length === 0) {
     if (currentLevel == maxLevels) {
       gameOver("You've completed the game! CONGRATULATIONS!");
@@ -171,7 +171,7 @@ function gameOver(message) {
   document.getElementById('winner').innerHTML = message;
   document.getElementById('playerName').innerHTML = playerName;
   document.getElementById('totalScore').innerHTML = playerScore;
-  document.getElementById('totalTime').innerHTML = timeDiff + "s";
+  document.getElementById('totalTime').innerHTML = timeDiff + 's';
   restart();
 }
 
@@ -196,7 +196,7 @@ function newLevel() {
 }
 
 function removeDucks() {
-  document.querySelectorAll('.duck').forEach(duck => {
+  document.querySelectorAll('.duck').forEach((duck) => {
     duck.classList.remove('flying');
     duck.classList.remove('falling');
     duck.parentNode.removeChild(duck);
@@ -204,13 +204,13 @@ function removeDucks() {
 }
 
 function removeShots() {
-  document.querySelectorAll('#shot div').forEach(shot => {
+  document.querySelectorAll('#shot div').forEach((shot) => {
     shot.parentNode.removeChild(shot);
   });
 }
 
 function removeHits() {
-  document.querySelectorAll('#hit div').forEach(hit => {
+  document.querySelectorAll('#hit div').forEach((hit) => {
     hit.parentNode.removeChild(hit);
   });
 }
