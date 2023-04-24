@@ -10,21 +10,17 @@ let isAnimationRunning = false;
 const dogWalk = document.getElementById('dogWalk');
 const dogWithDuck = document.getElementById('dogWithDuck');
 const dogLaughing = document.getElementById('dogLaugh');
+const audio = document.getElementById("introSound");
 
 
 //LBA
-// window.addEventListener('DOMContentLoaded', (event) => {
-//   const introSound = document.getElementById('introSound');
-//   introSound.play();
-// });
-// LBA
-
-// function playIntro(){
-//   let audio = new Audio("../audio/duck-hunt-intro.mp3");
+// window.onload = function() {
+//   const audio = document.getElementById("introSound");
 //   audio.play();
-// }
-
+// };
 // LBA END
+
+
 const activeDucks = () => {
   return document.querySelectorAll('.duck:not(.falling)');
 };
@@ -36,6 +32,7 @@ inputElement.addEventListener('keypress', function (event) {
   if (event.key === 'Enter') {
     event.preventDefault();
     playerName = inputElement.value;
+    audio.play(); // LBA
     if (!playerName.trim()) {
       alert('Please enter your name to start the game.');
       return;
