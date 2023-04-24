@@ -32,6 +32,11 @@
   transform: translate(-50%, 0);
 }
 
+.btn{
+  display: flex;
+  justify-content: center;
+}
+
 .levels{
   position: absolute;
   top: 50px;
