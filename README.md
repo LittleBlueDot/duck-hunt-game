@@ -6,6 +6,8 @@
 
 Duck Hunt is a simple arcade game inspired by the original Nintendo Duck Hunt game. This game is created using HTML5, CSS3 / SASS and Javascript.
 
+![My image](duck-hunt.png)
+
 This game is a **[MindSwap Bootcamp's](https://mindswap.academy/)** project created by **[Nuno Mesquita](https://github.com/nunogmesquita)** and **[Lina Balciunaite](https://github.com/LittleBlueDot)**.
 
 ## Usage
